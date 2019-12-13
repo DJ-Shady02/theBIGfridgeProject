@@ -1,0 +1,17 @@
+*{
+  /* Stuff here */
+}
+
+html {
+  font-size: 15px;
+}
+
+#logo {
+  height: 30px;
+}
+
+ion-header ion-toolbar #top-tabbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

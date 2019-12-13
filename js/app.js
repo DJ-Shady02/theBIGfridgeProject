@@ -1,5 +1,6 @@
 "use strict";
 
+// Modal functionality
 customElements.define('modal-page', class extends HTMLElement {
   connectedCallback() {
     this.innerHTML = document.getElementById('modal-sell').innerHTML;
