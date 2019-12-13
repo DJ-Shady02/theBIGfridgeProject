@@ -17,10 +17,12 @@
       <!------------ home ------------>
       <ion-tab tab="home">
         <ion-header translucent>
-          <ion-toolbar>
-            <ion-title>theBIGfridge</ion-title>
-            <div id="top-tabbar"> <!-- minus title -->
-              <img id="logo" src="img/logo_black.png" alt ="Logo theBIGfridge">
+          <ion-toolbar class="yellow">
+            <div>
+              <div>
+                <img id="logo" src="img/logo_black.png" alt ="Logo theBIGfridge">
+              </div>
+              <h1>Køleskab</h1>
               <div>
                 <!-- add search function --><ion-icon name="search"></ion-icon>
                 <ion-icon name="chatbubbles"></ion-icon>
@@ -30,7 +32,7 @@
         </ion-header>
 
         <ion-content fullscreen class="ion-padding">
-          <h1>theBIGfridge</h1>
+          <p>theBIGfridge</p>
         </ion-content>
       </ion-tab>
       <!------------ Følger ------------>
@@ -138,10 +140,10 @@
 
   <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
   <!-- firebase configuration and authentication -->
-  <script src="js/auth"></script>
+  <!--script src="js/auth"></script-->
 
   <!-- main app.js file -->
   <script src="js/app.js"></script>

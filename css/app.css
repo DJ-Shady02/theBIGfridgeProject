@@ -1,17 +1,80 @@
-*{
-  /* Stuff here */
+* {
+  padding: 0;
+  margin: 0;
+  /* Borderbox set by Ionic */
+}
+
+:root {
+  --ion-color-yellow: #E7B73D;
+  --ion-color-yellow-rgb: 231 183 61;
+  --ion-color-yellow-contrast: #ffffff;
+  --ion-color-yellow-contrast-rgb: 255,255,255;
+  --ion-color-yellow-shade: #5ca56c;
+  --ion-color-yellow-tint: #78c288;
+
+  --ion-color-orange: #EA951D;
+  --ion-color-orange-rgb: 234 149 29;
+  --ion-color-orange-contrast: #ffffff;
+  --ion-color-orange-contrast-rgb: 255,255,255;
+  --ion-color-orange-shade: #5ca56c;
+  --ion-color-orange-tint: #78c288;
+  --darkOrange: #C86001;
+  --white: #FFFFFF;
+  --black: #050706;
+}
+
+.ion-color-yellow {
+  --ion-color-base: var(--ion-color-yellow);
+  --ion-color-base-rgb: var(--ion-color-yellow-rgb);
+  --ion-color-contrast: var(--ion-color-yellow-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-yellow-contrast-rgb);
+  --ion-color-shade: var(--ion-color-yellow-shade);
+  --ion-color-tint: var(--ion-color-yellow-tint);
+}
+
+.ion-color-orange {
+  --ion-color-base: var(--ion-color-orange);
+  --ion-color-base-rgb: var(--ion-color-orange-rgb);
 }
 
 html {
   font-size: 15px;
 }
 
-#logo {
-  height: 30px;
+ion-header ion-toolbar {
+  background-color: var(--ion-color-yellow);
 }
 
-ion-header ion-toolbar #top-tabbar {
+.yellow {
+  background-color: var(--ion-color-yellow);
+}
+
+ion-header ion-toolbar > div {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 3.334rem;
+  padding: 0 1.334rem;
+}
+
+ion-header ion-toolbar div div { /* Tabbar content except h1 */
+  width: 65px;
+  flex-shrink: 0;
+}
+
+ion-header ion-toolbar #logo {
+  height: 2rem;
+}
+
+ion-header ion-toolbar ion-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+ion-header ion-toolbar h1 {
+  font-size: 1.33rem;
+  text-align: center;
+  width: 100%;
+  margin: 0;
 }
