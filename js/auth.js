@@ -18,12 +18,51 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 // Force long polling for Jakob to be able to use firestore
+// This creates longer loadtimes, but ensures the minority of users who experience this connection issue are able to use the app as well.
 db.settings({
   experimentalForceLongPolling: true
 });
 
-// ---------- Firebase auth functionality ---------- //
+// hide welcome tabs
+function hideWelcomeTabs() {
+  const tabs = document.querySelectorAll('.welcome-tab')
+  for (let tab of tabs) {
+    tab.style.display = "none";
+  }
+}
 
+// show login form
+function showLogin() {
+  // hide all tabs
+  hideWelcomeTabs();
+
+  // then show login tab
+  const loginTab = document.querySelector('#login-form')
+  loginTab.style.display = "block";
+}
+
+// show signup form
+function showSignup() {
+  // hide all tabs
+  hideWelcomeTabs();
+
+  // then show first signup tab
+  const signupTab = document.querySelector('#signup-form')
+  signupTab.style.display = "block";
+}
+
+// show welcome index
+function showWelcomeIndex() {
+  // hide all tabs
+  hideWelcomeTabs();
+
+  // then show first signup tab
+  const indexTab = document.querySelector('#welcome-index')
+  indexTab.style.display = "flex";
+}
+
+// ---------- Firebase auth functionality ---------- //
+/*
 // Listen for auth status changes
 auth.onAuthStateChanged(user => {
   console.log(user);
@@ -62,6 +101,7 @@ createForm.addEventListener('submit', (e) => {
     console.log(err.message);
   })
 })
+*/
 
 // Signup
 const signupForm = document.querySelector('#signup-form');
@@ -113,3 +153,13 @@ loginForm.addEventListener('submit', (e) => {
     loginForm.reset();
   });
 });
+
+// Hide or show tabbar
+function toggleTabbar() {
+  const tabbar = document.querySelector('ion-tab-bar');
+  if (tabbar.style.display === "none") {
+    tabbar.style.display = "flex";
+  } else {
+    tabbar.style.display = "none";
+  }
+}
