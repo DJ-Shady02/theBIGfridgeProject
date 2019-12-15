@@ -3,7 +3,7 @@
 // Modal functionality
 customElements.define('modal-page', class extends HTMLElement {
   connectedCallback() {
-    this.innerHTML = document.getElementById('modal-sell').innerHTML;
+    this.innerHTML = document.getElementById('modal-create').innerHTML;
   }
 });
 

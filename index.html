@@ -8,24 +8,127 @@
   <meta name="description" content="theBIGfridge">
   <meta name="author" content="Rasmus Cederdorff">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+  <link href="https://fonts.googleapis.com/css?family=Pangolin|Raleway&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
   <ion-app>
     <ion-tabs>
+      <!------------ welcome screen ------------>
+      <ion-tab id="welcome" tab="welcome">
+        <div class="colouring-div">
+          <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
+          <section id="welcome-index" class="welcome-tab">
+            <p>Opslagstavlen for overskudsfødevarer</p>
+
+            <div>
+              <p>Vil du være med?</p>
+              <button type="button" onclick="showLogin()">log ind</button><br>
+              <button type="button" onclick="showSignup()">bliv medlem</button>
+            </div>
+          </section>
+
+          <section id="signup-form" class="welcome-tab" style="display: none;">
+            <form class="">
+              <div id="signup-form-part-one" style="display: block;">
+                <button type="button" class="back-button" onclick="showWelcomeIndex()"><!--img src="" alt=""-->&lt;</button>
+                <h1>Bliv medlem</h1>
+                <div class="form-element">
+                  <label for="signup-email">e-mail</label><br>
+                  <input type="text" id="signup-email" required>
+                </div>
+                <div class="form-element">
+                  <label for="signup-password">adgangskode</label><br>
+                  <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-element">
+                  <label for="signup-password-repeat">gentag adgangskode</label><br>
+                  <input type="password" id="signup-password-repeat" required>
+                </div>
+                <button type="button" name="button">Næste</button>
+              </div>
+
+              <div id="signup-form-part-two" style="display: none;">
+                <button type="button" class="back-button" name="button"><!--img src="" alt=""-->&lt;</button>
+                <h1>Oplysninger om dig</h1>
+                <div class="form-element">
+                  <label for="signup-first-name">fornavn</label><br>
+                  <input type="text" id="signup-first-name" required>
+                </div>
+                <div class="form-element">
+                  <label for="signup-last-name">efternavn</label><br>
+                  <input type="text" id="signup-last-name" required>
+                </div>
+                <div class="form-element">
+                  <label for="signup-address">adresse</label><br>
+                  <input type="text" id="signup-address" required>
+                </div>
+                <div class="form-element-double">
+                  <div class="form-element">
+                    <label for="signup-city">by</label><br>
+                    <input type="text" id="signup-city" required>
+                  </div>
+                  <div class="form-element">
+                    <label for="signup-postal">postnummer</label><br>
+                    <input type="text" id="signup-postal" required>
+                  </div>
+                </div>
+                <div class="form-element">
+                  <label for="signup-phone">telefon</label><br>
+                  <input type="text" id="signup-phone" required>
+                </div>
+                <div class="form-element-checkbox-list">
+                  <span>fortrukne betalingsformer</span><br>
+                  <label for="signup-cash">Kontakt</label>
+                  <input type="checkbox" id="signup-cash">
+                  <label for="signup-mobilepay">MobilePay</label>
+                  <input type="checkbox" id="signup-mobilepay">
+                </div>
+                <button type="button" name="button">Opret bruger</button>
+              </div>
+            </form>
+          </section>
+
+          <section id="login-form" class="welcome-tab" style="display: none;">
+            <form>
+              <div class="form-header">
+                <div>
+                  <button type="button" class="back-button" onclick="showWelcomeIndex()"><!--img src="" alt=""-->&lt;</button>
+                </div>
+                <h1>Log ind</h1>
+                <div>
+                  <!-- empty space -->
+                </div>
+              </div>
+              <div class="form-element">
+                <label for="login-email">e-mail</label><br>
+                <input type="text" id="login-email" required>
+              </div>
+              <div class="form-element">
+                <label for="login-password">adgangskode</label><br>
+                <input type="password" id="login-password" required>
+                <p>Glemt din adgangskode?</p>
+              </div>
+              <button type="button" name="button">Log ind</button>
+            </form>
+          </section>
+        </div>
+      </ion-tab>
       <!------------ home ------------>
       <ion-tab tab="home">
-        <ion-header translucent>
-          <ion-toolbar class="yellow">
+        <ion-header>
+          <ion-toolbar color="yellow">
             <div>
               <div>
-                <img id="logo" src="img/logo_black.png" alt ="Logo theBIGfridge">
+                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
               </div>
               <h1>Køleskab</h1>
               <div>
                 <!-- add search function --><ion-icon name="search"></ion-icon>
-                <ion-icon name="chatbubbles"></ion-icon>
+                <ion-tab-button tab="messages">
+                  <ion-icon name="chatbubbles"></ion-icon>
+                </ion-tab-button>
               </div>
             </div>
           </ion-toolbar>
@@ -35,67 +138,114 @@
           <p>theBIGfridge</p>
         </ion-content>
       </ion-tab>
+
       <!------------ Følger ------------>
       <ion-tab tab="follows">
-        <ion-header translucent>
-          <ion-toolbar>
-            <ion-title>Følger</ion-title>
+        <ion-header>
+          <ion-toolbar color="yellow">
+            <div>
+              <div>
+                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
+              </div>
+              <h1>Følger feed</h1>
+              <div>
+                <!-- add search function --><ion-icon name="search"></ion-icon>
+                <ion-tab-button tab="messages">
+                  <ion-icon name="chatbubbles"></ion-icon>
+                </ion-tab-button>
+              </div>
+            </div>
           </ion-toolbar>
         </ion-header>
 
         <ion-content fullscreen class="ion-padding">
-          <h1>Følger</h1>
+          <p>Følger</p>
         </ion-content>
       </ion-tab>
+
       <!------------ Opret opslag ------------>
       <ion-tab id="modal-create">
         <ion-header>
-          <ion-toolbar>
-            <ion-title>Opret Opslag</ion-title>
-            <ion-buttons slot="primary">
-              <ion-button onClick="dismissModal()">
-                <ion-icon slot="icon-only" name="close"></ion-icon>
-              </ion-button>
-            </ion-buttons>
+          <ion-toolbar color="yellow">
+            <div>
+              <div>
+                <ion-buttons slot="primary">
+                  <ion-button onClick="dismissModal()">
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </div>
+              <h1>Vælg billede</h1>
+              <div>
+                <!-- empty space -->
+              </div>
+            </div>
           </ion-toolbar>
         </ion-header>
 
         <ion-content class="ion-padding">
-          Modal Content
+          <p>Modal Content</p>
         </ion-content>
       </ion-tab>
 
       <!------------ Profil ------------>
       <ion-tab tab="profile">
-        <ion-header translucent>
-          <ion-toolbar>
-            <ion-title>Min Profil</ion-title>
+        <ion-header>
+          <ion-toolbar color="yellow">
+            <div>
+              <div>
+                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
+              </div>
+              <h1>Min profil</h1>
+              <div>
+                <ion-tab-button tab="messages">
+                  <ion-icon name="chatbubbles"></ion-icon>
+                </ion-tab-button>
+              </div>
+            </div>
           </ion-toolbar>
         </ion-header>
 
         <ion-content fullscreen class="ion-padding">
-          <h1>Min Profil</h1>
+          <p>Min Profil</p>
         </ion-content>
       </ion-tab>
 
       <!------------ Menu ------------>
       <ion-tab tab="menu">
-        <ion-header translucent>
-          <ion-toolbar>
-            <ion-title>Menu</ion-title>
+        <ion-header>
+          <ion-toolbar color="yellow">
+            <div>
+              <div>
+                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
+              </div>
+              <h1>Menu</h1>
+              <div>
+                <!-- empty space -->
+              </div>
+            </div>
           </ion-toolbar>
         </ion-header>
 
         <ion-content fullscreen class="ion-padding">
-          <h1>Menu</h1>
+          <p>Menu</p>
+          <button id="logout" type="button" name="button"></button>
         </ion-content>
       </ion-tab>
 
       <!------------ Beskeder ------------>
       <ion-tab tab="messages">
-        <ion-header translucent>
-          <ion-toolbar>
-            <ion-title>Beskeder</ion-title>
+        <ion-header>
+          <ion-toolbar color="yellow">
+            <div>
+              <div>
+
+              </div>
+              <h1>Chat</h1>
+              <div>
+                <!-- empty space -->
+              </div>
+            </div>
           </ion-toolbar>
         </ion-header>
 
@@ -105,7 +255,7 @@
       </ion-tab>
 
       <!------------ Tabbar ------------>
-      <ion-tab-bar slot="bottom">
+      <ion-tab-bar style="display: none;" slot="bottom">
         <ion-tab-button tab="home">
           <ion-label>Køleskab</ion-label>
           <ion-icon name="home"></ion-icon>
@@ -143,6 +293,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
   <!-- firebase configuration and authentication -->
+  <script src="js/auth.js"></script>
   <!--script src="js/auth"></script-->
 
   <!-- main app.js file -->
