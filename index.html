@@ -24,68 +24,88 @@
 
             <div>
               <p>Vil du være med?</p>
-              <button type="button" onclick="showLogin()">log ind</button><br>
+              <button type="button" onclick="showLogin()">log ind</button>
               <button type="button" onclick="showSignup()">bliv medlem</button>
             </div>
           </section>
 
           <section id="signup-form" class="welcome-tab" style="display: none;">
-            <form class="">
-              <div id="signup-form-part-one" style="display: block;">
-                <button type="button" class="back-button" onclick="showWelcomeIndex()"><!--img src="" alt=""-->&lt;</button>
-                <h1>Bliv medlem</h1>
-                <div class="form-element">
-                  <label for="signup-email">e-mail</label><br>
-                  <input type="text" id="signup-email" required>
+            <form>
+              <div id="signup-form-tab-one" style="display: block;">
+                <div class="form-header">
+                  <div>
+                    <button type="button" class="back-button" onclick="showWelcomeIndex()"><!--img src="" alt=""-->&lt;</button>
+                  </div>
+                  <h1>Bliv medlem</h1>
+                  <div>
+                    <!-- empty space -->
+                  </div>
                 </div>
                 <div class="form-element">
-                  <label for="signup-password">adgangskode</label><br>
+                  <input type="email" id="signup-email" required>
+                  <label for="signup-email">e-mail</label>
+                </div>
+                <div class="form-element">
                   <input type="password" id="signup-password" required>
+                  <label for="signup-password">adgangskode</label>
                 </div>
                 <div class="form-element">
-                  <label for="signup-password-repeat">gentag adgangskode</label><br>
                   <input type="password" id="signup-password-repeat" required>
+                  <label for="signup-password-repeat">gentag adgangskode</label>
                 </div>
-                <button type="button" name="button">Næste</button>
+                <button type="button" class="form-button" onclick="showSecondSignupTab()">Næste</button>
               </div>
 
-              <div id="signup-form-part-two" style="display: none;">
-                <button type="button" class="back-button" name="button"><!--img src="" alt=""-->&lt;</button>
-                <h1>Oplysninger om dig</h1>
+              <div id="signup-form-tab-two" style="display: none;">
+                <div class="form-header">
+                  <div>
+                    <button type="button" class="back-button" onclick="showFirstSignupTab()"><!--img src="" alt=""-->&lt;</button>
+                  </div>
+                  <h1>Oplysninger om dig</h1>
+                  <div>
+                    <!-- empty space -->
+                  </div>
+                </div>
                 <div class="form-element">
-                  <label for="signup-first-name">fornavn</label><br>
                   <input type="text" id="signup-first-name" required>
+                  <label for="signup-first-name">fornavn</label>
                 </div>
                 <div class="form-element">
-                  <label for="signup-last-name">efternavn</label><br>
                   <input type="text" id="signup-last-name" required>
+                  <label for="signup-last-name">efternavn</label>
                 </div>
                 <div class="form-element">
-                  <label for="signup-address">adresse</label><br>
                   <input type="text" id="signup-address" required>
+                  <label for="signup-address">adresse</label>
                 </div>
                 <div class="form-element-double">
                   <div class="form-element">
-                    <label for="signup-city">by</label><br>
                     <input type="text" id="signup-city" required>
+                    <label for="signup-city">by</label>
                   </div>
                   <div class="form-element">
-                    <label for="signup-postal">postnummer</label><br>
-                    <input type="text" id="signup-postal" required>
+                    <input type="text" id="signup-postal" maxlength="4" required>
+                    <label for="signup-postal">postnr</label>
                   </div>
                 </div>
                 <div class="form-element">
-                  <label for="signup-phone">telefon</label><br>
-                  <input type="text" id="signup-phone" required>
+                  <input type="phone" id="signup-phone" required>
+                  <label for="signup-phone">telefon</label>
                 </div>
                 <div class="form-element-checkbox-list">
-                  <span>fortrukne betalingsformer</span><br>
-                  <label for="signup-cash">Kontakt</label>
-                  <input type="checkbox" id="signup-cash">
-                  <label for="signup-mobilepay">MobilePay</label>
-                  <input type="checkbox" id="signup-mobilepay">
+                  <div>
+                    <label>fortrukne betalingsformer</label>
+                  </div>
+                  <div class="form-element">
+                    <input type="checkbox" id="signup-cash">
+                    <label for="signup-cash">Kontant</label>
+                  </div>
+                  <div class="form-element">
+                    <input type="checkbox" id="signup-mobilepay">
+                    <label for="signup-mobilepay">MobilePay</label>
+                  </div>
                 </div>
-                <button type="button" name="button">Opret bruger</button>
+                <button type="button" onclick="signupUser()" class="form-button">Opret bruger</button>
               </div>
             </form>
           </section>
@@ -102,21 +122,21 @@
                 </div>
               </div>
               <div class="form-element">
-                <label for="login-email">e-mail</label><br>
-                <input type="text" id="login-email" required>
+                <input type="email" id="login-email" required>
+                <label for="login-email">e-mail</label>
               </div>
               <div class="form-element">
-                <label for="login-password">adgangskode</label><br>
                 <input type="password" id="login-password" required>
-                <p>Glemt din adgangskode?</p>
+                <label for="login-password">adgangskode</label>
+                <p class="form-forgot-password">Glemt din adgangskode?</p>
               </div>
-              <button type="button" name="button">Log ind</button>
+              <button type="button" onclick="loginUser()" class="form-button">Log ind</button>
             </form>
           </section>
         </div>
       </ion-tab>
       <!------------ home ------------>
-      <ion-tab tab="home">
+      <ion-tab id="home" tab="home">
         <ion-header>
           <ion-toolbar color="yellow">
             <div>
@@ -229,7 +249,7 @@
 
         <ion-content fullscreen class="ion-padding">
           <p>Menu</p>
-          <button id="logout" type="button" name="button"></button>
+          <button id="logout" type="button" onclick="logoutUser()">Log ud</button>
         </ion-content>
       </ion-tab>
 

@@ -14,18 +14,18 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Make auth and firestore references
-const auth = firebase.auth();
-const db = firebase.firestore();
+const _auth = firebase.auth();
+const _db = firebase.firestore();
 
 // Force long polling for Jakob to be able to use firestore
 // This creates longer loadtimes, but ensures the minority of users who experience this connection issue are able to use the app as well.
-db.settings({
+_db.settings({
   experimentalForceLongPolling: true
 });
 
 // hide welcome tabs
 function hideWelcomeTabs() {
-  const tabs = document.querySelectorAll('.welcome-tab')
+  const tabs = document.querySelectorAll('.welcome-tab');
   for (let tab of tabs) {
     tab.style.display = "none";
   }
@@ -37,7 +37,7 @@ function showLogin() {
   hideWelcomeTabs();
 
   // then show login tab
-  const loginTab = document.querySelector('#login-form')
+  const loginTab = document.querySelector('#login-form');
   loginTab.style.display = "block";
 }
 
@@ -47,7 +47,7 @@ function showSignup() {
   hideWelcomeTabs();
 
   // then show first signup tab
-  const signupTab = document.querySelector('#signup-form')
+  const signupTab = document.querySelector('#signup-form');
   signupTab.style.display = "block";
 }
 
@@ -57,29 +57,46 @@ function showWelcomeIndex() {
   hideWelcomeTabs();
 
   // then show first signup tab
-  const indexTab = document.querySelector('#welcome-index')
+  const indexTab = document.querySelector('#welcome-index');
   indexTab.style.display = "flex";
+}
+
+const _firstTab = document.querySelector('#signup-form-tab-one');
+const _secondTab = document.querySelector('#signup-form-tab-two');
+// show first tab of the signup form
+function showFirstSignupTab() {
+  // hide the first tab
+  _secondTab.style.display = "none";
+
+  // then show first signup tab
+  _firstTab.style.display = "block";
+}
+
+// show second tab of the signup form
+function showSecondSignupTab() {
+  // check if the first tab has been filled in
+  const signupEmail = document.querySelector('#signup-email');
+  const signupPassword = document.querySelector('#signup-password');
+  const signupPasswordRepeat = document.querySelector('#signup-password-repeat');
+
+  // Handle errors
+  if (signupEmail.value == "" || signupPassword.value == "" || signupPasswordRepeat.value == "" || signupPassword.value != signupPasswordRepeat.value) { // If error
+    console.log("Invalid values" + "Correct values and try again");
+    // show error to user
+    return; // Do not show the second tab
+  } else {
+    // remove error in case they go back to the first tab
+  }
+
+  // hide the first tab
+  _firstTab.style.display = "none";
+
+  // then show first signup tab
+  _secondTab.style.display = "block";
 }
 
 // ---------- Firebase auth functionality ---------- //
 /*
-// Listen for auth status changes
-auth.onAuthStateChanged(user => {
-  console.log(user);
-  if (user) {
-    // Get data
-    db.collection('guides').onSnapshot(snapshot => {
-      _setupGuides(snapshot.docs);
-      _setupUI(user);
-    }, err => {
-      console.log(err.message);
-    });
-  } else {
-    _setupGuides([]); //Call it with empty array
-    _setupUI();
-  }
-});
-
 // Create new guide
 const createForm = document.querySelector('#create-form')
 createForm.addEventListener('submit', (e) => {
@@ -103,56 +120,105 @@ createForm.addEventListener('submit', (e) => {
 })
 */
 
-// Signup
-const signupForm = document.querySelector('#signup-form');
-signupForm.addEventListener('submit', (e) => {
-  //Prevent from refreshing page
-  e.preventDefault();
+// custom change of tabs to #home - works as Ionic but does so without shorthand functions
+function showTabHome() {
+  // tab-hidden on "#welcome"
+  document.querySelector('#welcome').classList.add("tab-hidden");
+  // tab-hidden off "#home"
+  document.querySelector('#home').classList.remove("tab-hidden");
+  // display none off "ion-tab-bar"
+  document.querySelector('ion-tab-bar').style.display = 'flex';
+  // tab-selected on "#tab-button-home"
+  document.querySelector('#tab-button-home').classList.add("tab-selected");
+}
 
+// custom change of tabs to #welcome - works as Ionic but does so without shorthand functions
+function showTabWelcome() {
+
+}
+
+// Listen for auth status changes
+// If logged in and page refreshes, stay logged in.
+_auth.onAuthStateChanged(user => {
+  console.log("User Credentials:");
+  console.log(user);
+  if (user) {
+    // Go directly to home
+    showTabHome();
+
+  } else {
+    // If no user, let them log in.
+  }
+});
+
+// Signup
+function signupUser() {
   // Get user info
-  const email = signupForm['signup-email'].value;
-  const password = signupForm['signup-password'].value;
+  const signupEmail = document.querySelector('#signup-email');
+  const signupPassword = document.querySelector('#signup-password');
+  // no need to get password repeat, we already checked if they were equal
+  const signupFirstName = document.querySelector('#signup-first-name');
+  const signupLastName = document.querySelector('#signup-last-name');
+  const signupAddress = document.querySelector('#signup-address');
+  const signupCity = document.querySelector('#signup-city');
+  const signupPostal = document.querySelector('#signup-postal');
+  const signupPhone = document.querySelector('#signup-phone');
+  const signupCash = document.querySelector('#signup-cash');
+  const signupMobilePay = document.querySelector('#signup-mobilepay');
+
+  // Handle errors
+  // signupEmail and -password has already been checked
+  if (signupFirstName.value == "" || signupLastName.value == "" || signupAddress.value == "" || signupCity.value == signupPostal.value || signupPhone.value == "") { // If error
+    console.log("Invalid values" + "Correct values and try again");
+    // show error to user
+    return; // Do not create user
+  } else {
+    // remove error in case they come back or have to try again and recieve new errors
+  };
 
   // Sign up the user
-  auth.createUserWithEmailAndPassword(email, password).then(cred => {
-    return db.collection('users').doc(cred.user.uid).set({
-      bio: signupForm['signup-bio'].value
+  _auth.createUserWithEmailAndPassword(signupEmail.value, signupPassword.value).then(cred => {
+    return _db.collection('users').doc(cred.user.uid).set({
+      firstName: signupFirstName.value,
+      lastName: signupLastName.value,
+      address: signupAddress.value,
+      city: signupCity.value,
+      postal: signupPostal.value,
+      phone: signupPhone.value,
+      cash: signupCash.checked,
+      mobilePay: signupMobilePay.checked,
     });
   }).then(() => {
-    // Get the modal
-    const modal = document.querySelector('#modal-signup');
-    // Close modal
-    M.Modal.getInstance(modal).close();
+    // go to home
+    showTabHome();
+
     // Reset the form field input
-    signupForm.reset();
-    signupForm.querySelector('.error').innerHTML = '';
   }).catch(err => {
-    signupForm.querySelector('.error').innerHTML = err.message;
+    // display error
+    console.log(err.message);
+    //signupForm.querySelector('.error').innerHTML = err.message;
   });
-});
+}
 
 // Logout
 const logout = document.querySelector('#logout');
-logout.addEventListener('click', (e) => {
-  e.preventDefault();
-  auth.signOut();
-});
+function logoutUser() {
+  _auth.signOut();
+  console.log("User logged out");
+}
 
 // Login
 const loginForm = document.querySelector('#login-form');
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
+function loginUser() {
   // Get user info
-  const email = loginForm['login-email'].value;
-  const password = loginForm['login-password'].value;
+  const loginEmail = document.querySelector('#login-email');
+  const loginPassword = document.querySelector('#login-password');
 
-  auth.signInWithEmailAndPassword(email, password).then(cred => {
-    const modal = document.querySelector('#modal-login');
-    M.Modal.getInstance(modal).close();
-    loginForm.reset();
+  _auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value).then(cred => {
+    // go to home
+    showTabHome();
   });
-});
+}
 
 // Hide or show tabbar
 function toggleTabbar() {
