@@ -287,3 +287,76 @@ form .form-element-checkbox-list .form-element label {
   font-size: 1rem;
   color: var(--darkGrey);
 }
+
+.card {
+  width: 90%;
+  height: 156px;
+}
+
+
+
+/* --- opslag side ---*/
+
+.opslagTitel {
+  grid-area: t;
+  color: #E7B73D;
+  font-size: 24pt;
+  font-family: 'Raleway', sans-serif;
+
+}
+.opslagPris {
+  grid-area: p;
+  font-size: 24pt;
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'Raleway', sans-serif;
+}
+.opslagMaengde {
+  grid-area: m;
+  color: #ADADAD;
+  font-size: 14pt;
+  font-family: 'Raleway', sans-serif;
+}
+.opslagAfstand {
+  grid-area: a;
+  color: #ADADAD;
+  font-size: 14pt;
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'Raleway', sans-serif;
+}
+.opslagBeskrivelse {
+  grid-area: b;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16pt;
+}
+.kvalitetInfo {
+  grid-area: k;
+
+}
+
+
+.opslagInfo {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "t t p p"
+  "m m a a"
+  "b b b b"
+  ". k k .";
+}
+
+.skriv {
+  width: 110%;
+margin-left: -5%;
+height: 52px;
+color: white;
+background-color: #E7B73D;
+position: fixed;
+bottom: 0;
+font-family: 'Pangolin', cursive;
+font-size: 14pt;
+}
+
+/* Profil side */

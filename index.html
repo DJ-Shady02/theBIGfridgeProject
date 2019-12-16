@@ -155,8 +155,94 @@
         </ion-header>
 
         <ion-content fullscreen class="ion-padding">
-          <p>theBIGfridge</p>
-        </ion-content>
+
+        <h1>Frugt & grønt</h1>
+        <ion-slides>
+
+          <ion-slide class="slide">
+            <ion-card class="card" onclick="presentOpslagModal()">
+              <img class="cardImg" src="cardImgIndex" />
+              <ion-card-header>
+                <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                <h2 class="afstand">3.1 km</h2>
+                <h2 class="pris">40 kr</h2>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card>
+              <img class="cardImg" src="./madison.jpg" />
+              <ion-card-header>
+                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card>
+              <img class="cardImg" src="./madison.jpg" />
+              <ion-card-header>
+                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+
+          <ion-slide>
+            <ion-card onclick="">
+              <img class="cardImg" src="./madison.jpg" />
+              <ion-card-header>
+                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+
+        </ion-slides>
+
+
+
+        <h1>Bagværk</h1>
+        <ion-slides>
+          <ion-slide>
+            <ion-card>
+              <img class="cardImg" src="./madison.jpg" />
+              <ion-card-header>
+                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+
+
+        <h1>Bagværk</h1>
+        <ion-slides>
+          <ion-slide>
+            <ion-card>
+              <img class="cardImg" src="./madison.jpg" />
+              <ion-card-header>
+                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-content>
       </ion-tab>
 
       <!------------ Følger ------------>
@@ -204,7 +290,38 @@
         </ion-header>
 
         <ion-content class="ion-padding">
-          <p>Modal Content</p>
+        <!--- lav profil bar --->
+        <ion-item>
+          Profil Bar
+        </ion-item>
+
+        <section class="opslagWrapper">
+          <img class="opslagImg" src="./opslag.jpg">
+          <div class="opslagInfo">
+            <h1 class="opslagTitel">Eksempel</h1>
+            <h2 class="opslagPris">40 kr</h2>
+            <h3 class="opslagMaengde">Pluk selv</h3>
+            <h3 class="opslagAfstand">3.1 km</h3>
+            <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
+
+            <div class="kvalitetInfo">
+              <div class="holdbarhed">
+                <h3>Holdbarhed</h3>
+                <img src="holdbarhedicon.svg" alt="Holdbarhed">
+                <h2>22.dec.</h2>
+              </div>
+              <div class="kvalitet">
+                <h3>Kvalitet</h3>
+                <img src="kvaliteticon.svg" alt="Kvalitet">
+                <h2>22.dec.</h2>
+              </div>
+            </div>
+          </div>
+          <button class="skriv">Skriv til bruger</button>
+
+        </section>
+
+
         </ion-content>
       </ion-tab>
 
@@ -227,7 +344,71 @@
         </ion-header>
 
         <ion-content fullscreen class="ion-padding">
-          <p>Min Profil</p>
+          <ion-item>
+            <div class="profilWrapper">
+              <img src="profilBillede.jpg">
+              <div class="foelgerContainer">
+                <div class="antalOpslag">
+                  <h1>Opslag</h1>
+                  <h2>1</h2>
+                </div>
+                <div class="antalFoelgere">
+                  <h1>Følgere</h1>
+                  <h2>3</h2>
+                </div>
+                <div class="antalFulgte">
+                  <h1>Følger</h1>
+                  <h2>1</h2>
+                </div>
+              </div>
+              <h1>navn</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
+              <button class="redigerKnap">Rediger profil</button>
+            </div>
+          </ion-item>
+          <section class="mineOpslag">
+          <ion-card>
+            <img class="cardImg" src="cardImgIndex" />
+            <ion-card-header>
+              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h2 class="afstand">3.1 km</h2>
+              <h2 class="pris">40 kr</h2>
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+            <img class="cardImg" src="cardImgIndex" />
+            <ion-card-header>
+              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h2 class="afstand">3.1 km</h2>
+              <h2 class="pris">40 kr</h2>
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+            <img class="cardImg" src="cardImgIndex" />
+            <ion-card-header>
+              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h2 class="afstand">3.1 km</h2>
+              <h2 class="pris">40 kr</h2>
+            </ion-card-content>
+          </ion-card>
+          <ion-card>
+            <img class="cardImg" src="cardImgIndex" />
+            <ion-card-header>
+              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <h2 class="afstand">3.1 km</h2>
+              <h2 class="pris">40 kr</h2>
+            </ion-card-content>
+          </ion-card>
+
+          </section>
         </ion-content>
       </ion-tab>
 
