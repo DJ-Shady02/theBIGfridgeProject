@@ -96,46 +96,6 @@ function showSecondSignupTab() {
 }
 
 // ---------- Firebase auth functionality ---------- //
-/*
-// Create new guide
-const createForm = document.querySelector('#create-form')
-createForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  db.collection('guides').add({
-    title: createForm['title'].value,
-    content: createForm['content'].value
-  }).then(() => {
-    // close modal and reset form
-
-    // Get the modal
-    const modal = document.querySelector('#modal-create');
-    // Close modal
-    M.Modal.getInstance(modal).close();
-    // Reset the form field input
-    createForm.reset();
-  }).catch(err => {
-    console.log(err.message);
-  })
-})
-*/
-
-// custom change of tabs to #home - works as Ionic but does so without shorthand functions
-function showTabHome() {
-  // tab-hidden on "#welcome"
-  document.querySelector('#welcome').classList.add("tab-hidden");
-  // tab-hidden off "#home"
-  document.querySelector('#home').classList.remove("tab-hidden");
-  // display none off "ion-tab-bar"
-  document.querySelector('ion-tab-bar').style.display = 'flex';
-  // tab-selected on "#tab-button-home"
-  document.querySelector('#tab-button-home').classList.add("tab-selected");
-}
-
-// custom change of tabs to #welcome - works as Ionic but does so without shorthand functions
-function showTabWelcome() {
-
-}
 
 // Listen for auth status changes
 // If logged in and page refreshes, stay logged in.
@@ -144,10 +104,12 @@ _auth.onAuthStateChanged(user => {
   console.log(user);
   if (user) {
     // Go directly to home
-    showTabHome();
-
+    showTab("home");
+    showTabbar(true);
   } else {
-    // If no user, let them log in.
+    // If no user, let them log in
+    showTab("welcome");
+    showTabbar(false);
   }
 });
 
@@ -190,7 +152,8 @@ function signupUser() {
     });
   }).then(() => {
     // go to home
-    showTabHome();
+    showTab("home");
+    showTabbar(true);
 
     // Reset the form field input
   }).catch(err => {
@@ -204,11 +167,11 @@ function signupUser() {
 const logout = document.querySelector('#logout');
 function logoutUser() {
   _auth.signOut();
+  showTabbar(false);
   console.log("User logged out");
 }
 
 // Login
-const loginForm = document.querySelector('#login-form');
 function loginUser() {
   // Get user info
   const loginEmail = document.querySelector('#login-email');
@@ -216,14 +179,15 @@ function loginUser() {
 
   _auth.signInWithEmailAndPassword(loginEmail.value, loginPassword.value).then(cred => {
     // go to home
-    showTabHome();
+    showTab("home");
+    showTabbar(true);
   });
 }
 
 // Hide or show tabbar
-function toggleTabbar() {
-  const tabbar = document.querySelector('ion-tab-bar');
-  if (tabbar.style.display === "none") {
+function showTabbar(boolean) {
+  const tabbar = document.querySelector('nav');
+  if (boolean === true) {
     tabbar.style.display = "flex";
   } else {
     tabbar.style.display = "none";

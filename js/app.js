@@ -1,5 +1,6 @@
 "use strict";
 
+/*
 // Modal functionality
 customElements.define('modal-page', class extends HTMLElement {
   connectedCallback() {
@@ -25,7 +26,7 @@ customElements.define('opslag-modal-page', class extends HTMLElement {
 function presentOpslagModal() {
   // create the modal with the `modal-page` component
   const modalElement = document.createElement('ion-modal');
-  modalElement.component = 'opslag-modal-page';
+  modalElement.component = 'modal-opslag';
   // present the modal
   document.body.appendChild(modalElement);
   return modalElement.present();
@@ -37,5 +38,4 @@ async function dismissModal() {
     'dismissed': true
   });
 }
-
-// Swipe function //
+*/

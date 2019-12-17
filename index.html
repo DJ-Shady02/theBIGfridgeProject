@@ -7,498 +7,639 @@
   <meta name='viewport' content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="theBIGfridge">
   <meta name="author" content="Rasmus Cederdorff">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
   <link href="https://fonts.googleapis.com/css?family=Pangolin|Raleway&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
-  <ion-app>
-    <ion-tabs>
-      <!------------ welcome screen ------------>
-      <ion-tab id="welcome" tab="welcome">
-        <div class="colouring-div">
-          <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
-          <section id="welcome-index" class="welcome-tab">
-            <p>Opslagstavlen for overskudsfødevarer</p>
 
+  <!------------ Tabbar ------------>
+  <nav style="display: none;">
+    <a onclick="showTab('home')">
+      <img src="img/home.svg" alt="hjem ikon">
+      <label>Køleskab</label>
+    </a>
+    <a onclick="showTab('follow')">
+      <img src="img/foelger.svg" alt="foelger ikon">
+      <label>Følger</label>
+    </a>
+    <a onclick="// modal">
+      <img src="img/plus.svg" alt="plus ikon">
+      <label>Opret opslag</label>
+    </a>
+    <a onclick="showTab('profile')">
+      <img src="img/profil.svg" alt="profil ikon">
+      <label>Profil</label>
+    </a>
+    <a onclick="showTab('menu')">
+      <img src="img/menu.svg" alt="menu ikon">
+      <label>Menu</label>
+    </a>
+  </nav>
+
+  <!------------ welcome screen ------------>
+  <section id="welcome" class="tab">
+    <img id="logo" src="img/logo_app_hvid.png" alt="Logo theBIGfridge">
+    <section id="welcome-index" class="welcome-tab">
+      <p class="pangolin">Opslagstavlen for overskudsfødevarer</p>
+
+      <div>
+        <p class="pangolin">Vil du være med?</p>
+        <button type="button" onclick="showLogin()">log ind</button>
+        <button type="button" onclick="showSignup()">bliv medlem</button>
+      </div>
+    </section>
+
+    <section id="signup-form" class="welcome-tab" style="display: none;">
+      <form>
+        <div id="signup-form-tab-one" style="display: block;">
+          <div class="form-header">
             <div>
-              <p>Vil du være med?</p>
-              <button type="button" onclick="showLogin()">log ind</button>
-              <button type="button" onclick="showSignup()">bliv medlem</button>
+              <button type="button" class="back-button" onclick="showWelcomeIndex()">
+                <!--img src="" alt=""-->&lt;</button>
             </div>
-          </section>
-
-          <section id="signup-form" class="welcome-tab" style="display: none;">
-            <form>
-              <div id="signup-form-tab-one" style="display: block;">
-                <div class="form-header">
-                  <div>
-                    <button type="button" class="back-button" onclick="showWelcomeIndex()"><!--img src="" alt=""-->&lt;</button>
-                  </div>
-                  <h1>Bliv medlem</h1>
-                  <div>
-                    <!-- empty space -->
-                  </div>
-                </div>
-                <div class="form-element">
-                  <input type="email" id="signup-email" required>
-                  <label for="signup-email">e-mail</label>
-                </div>
-                <div class="form-element">
-                  <input type="password" id="signup-password" required>
-                  <label for="signup-password">adgangskode</label>
-                </div>
-                <div class="form-element">
-                  <input type="password" id="signup-password-repeat" required>
-                  <label for="signup-password-repeat">gentag adgangskode</label>
-                </div>
-                <button type="button" class="form-button" onclick="showSecondSignupTab()">Næste</button>
-              </div>
-
-              <div id="signup-form-tab-two" style="display: none;">
-                <div class="form-header">
-                  <div>
-                    <button type="button" class="back-button" onclick="showFirstSignupTab()"><!--img src="" alt=""-->&lt;</button>
-                  </div>
-                  <h1>Oplysninger om dig</h1>
-                  <div>
-                    <!-- empty space -->
-                  </div>
-                </div>
-                <div class="form-element">
-                  <input type="text" id="signup-first-name" required>
-                  <label for="signup-first-name">fornavn</label>
-                </div>
-                <div class="form-element">
-                  <input type="text" id="signup-last-name" required>
-                  <label for="signup-last-name">efternavn</label>
-                </div>
-                <div class="form-element">
-                  <input type="text" id="signup-address" required>
-                  <label for="signup-address">adresse</label>
-                </div>
-                <div class="form-element-double">
-                  <div class="form-element">
-                    <input type="text" id="signup-city" required>
-                    <label for="signup-city">by</label>
-                  </div>
-                  <div class="form-element">
-                    <input type="text" id="signup-postal" maxlength="4" required>
-                    <label for="signup-postal">postnr</label>
-                  </div>
-                </div>
-                <div class="form-element">
-                  <input type="phone" id="signup-phone" required>
-                  <label for="signup-phone">telefon</label>
-                </div>
-                <div class="form-element-checkbox-list">
-                  <div>
-                    <label>fortrukne betalingsformer</label>
-                  </div>
-                  <div class="form-element">
-                    <input type="checkbox" id="signup-cash">
-                    <label for="signup-cash">Kontant</label>
-                  </div>
-                  <div class="form-element">
-                    <input type="checkbox" id="signup-mobilepay">
-                    <label for="signup-mobilepay">MobilePay</label>
-                  </div>
-                </div>
-                <button type="button" onclick="signupUser()" class="form-button">Opret bruger</button>
-              </div>
-            </form>
-          </section>
-
-          <section id="login-form" class="welcome-tab" style="display: none;">
-            <form>
-              <div class="form-header">
-                <div>
-                  <button type="button" class="back-button" onclick="showWelcomeIndex()"><!--img src="" alt=""-->&lt;</button>
-                </div>
-                <h1>Log ind</h1>
-                <div>
-                  <!-- empty space -->
-                </div>
-              </div>
-              <div class="form-element">
-                <input type="email" id="login-email" required>
-                <label for="login-email">e-mail</label>
-              </div>
-              <div class="form-element">
-                <input type="password" id="login-password" required>
-                <label for="login-password">adgangskode</label>
-                <p class="form-forgot-password">Glemt din adgangskode?</p>
-              </div>
-              <button type="button" onclick="loginUser()" class="form-button">Log ind</button>
-            </form>
-          </section>
-        </div>
-      </ion-tab>
-      <!------------ home ------------>
-      <ion-tab id="home" tab="home">
-        <ion-header>
-          <ion-toolbar color="yellow">
+            <h1 class="pangolin">Bliv medlem</h1>
             <div>
-              <div>
-                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
-              </div>
-              <h1>Køleskab</h1>
-              <div>
-                <!-- add search function --><ion-icon name="search"></ion-icon>
-                <ion-tab-button tab="messages">
-                  <ion-icon name="chatbubbles"></ion-icon>
-                </ion-tab-button>
-              </div>
-            </div>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-content fullscreen class="ion-padding">
-
-        <h1>Frugt & grønt</h1>
-        <ion-slides>
-
-          <ion-slide class="slide">
-            <ion-card class="card" onclick="presentOpslagModal()">
-              <img class="cardImg" src="cardImgIndex" />
-              <ion-card-header>
-                <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <h2 class="afstand">3.1 km</h2>
-                <h2 class="pris">40 kr</h2>
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-
-          <ion-slide>
-            <ion-card>
-              <img class="cardImg" src="./madison.jpg" />
-              <ion-card-header>
-                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-
-          <ion-slide>
-            <ion-card>
-              <img class="cardImg" src="./madison.jpg" />
-              <ion-card-header>
-                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-
-          <ion-slide>
-            <ion-card onclick="">
-              <img class="cardImg" src="./madison.jpg" />
-              <ion-card-header>
-                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-
-        </ion-slides>
-
-
-
-        <h1>Bagværk</h1>
-        <ion-slides>
-          <ion-slide>
-            <ion-card>
-              <img class="cardImg" src="./madison.jpg" />
-              <ion-card-header>
-                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
-
-
-        <h1>Bagværk</h1>
-        <ion-slides>
-          <ion-slide>
-            <ion-card>
-              <img class="cardImg" src="./madison.jpg" />
-              <ion-card-header>
-                <ion-card-title class="cardTitle">Madison, WI</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
-              </ion-card-content>
-            </ion-card>
-          </ion-slide>
-        </ion-slides>
-      </ion-content>
-      </ion-tab>
-
-      <!------------ Følger ------------>
-      <ion-tab tab="follows">
-        <ion-header>
-          <ion-toolbar color="yellow">
-            <div>
-              <div>
-                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
-              </div>
-              <h1>Følger feed</h1>
-              <div>
-                <!-- add search function --><ion-icon name="search"></ion-icon>
-                <ion-tab-button tab="messages">
-                  <ion-icon name="chatbubbles"></ion-icon>
-                </ion-tab-button>
-              </div>
-            </div>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-content fullscreen class="ion-padding">
-          <p>Følger</p>
-        </ion-content>
-      </ion-tab>
-
-      <!------------ Opret opslag ------------>
-      <ion-tab id="modal-create">
-        <ion-header>
-          <ion-toolbar color="yellow">
-            <div>
-              <div>
-                <ion-buttons slot="primary">
-                  <ion-button onClick="dismissModal()">
-                    <ion-icon slot="icon-only" name="close"></ion-icon>
-                  </ion-button>
-                </ion-buttons>
-              </div>
-              <h1>Vælg billede</h1>
-              <div>
-                <!-- empty space -->
-              </div>
-            </div>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-content class="ion-padding">
-        <!--- lav profil bar --->
-        <ion-item>
-          Profil Bar
-        </ion-item>
-
-        <section class="opslagWrapper">
-          <img class="opslagImg" src="./opslag.jpg">
-          <div class="opslagInfo">
-            <h1 class="opslagTitel">Eksempel</h1>
-            <h2 class="opslagPris">40 kr</h2>
-            <h3 class="opslagMaengde">Pluk selv</h3>
-            <h3 class="opslagAfstand">3.1 km</h3>
-            <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
-
-            <div class="kvalitetInfo">
-              <div class="holdbarhed">
-                <h3>Holdbarhed</h3>
-                <img src="holdbarhedicon.svg" alt="Holdbarhed">
-                <h2>22.dec.</h2>
-              </div>
-              <div class="kvalitet">
-                <h3>Kvalitet</h3>
-                <img src="kvaliteticon.svg" alt="Kvalitet">
-                <h2>22.dec.</h2>
-              </div>
+              <!-- empty space -->
             </div>
           </div>
-          <button class="skriv">Skriv til bruger</button>
+          <div class="form-element">
+            <input type="email" id="signup-email" required>
+            <label for="signup-email">e-mail</label>
+          </div>
+          <div class="form-element">
+            <input type="password" id="signup-password" required>
+            <label for="signup-password">adgangskode</label>
+          </div>
+          <div class="form-element">
+            <input type="password" id="signup-password-repeat" required>
+            <label for="signup-password-repeat">gentag adgangskode</label>
+          </div>
+          <button type="button" class="form-button" onclick="showSecondSignupTab()">Næste</button>
+        </div>
 
-        </section>
-
-
-        </ion-content>
-      </ion-tab>
-
-      <!------------ Profil ------------>
-      <ion-tab tab="profile">
-        <ion-header>
-          <ion-toolbar color="yellow">
+        <div id="signup-form-tab-two" style="display: none;">
+          <div class="form-header">
             <div>
-              <div>
-                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
-              </div>
-              <h1>Min profil</h1>
-              <div>
-                <ion-tab-button tab="messages">
-                  <ion-icon name="chatbubbles"></ion-icon>
-                </ion-tab-button>
-              </div>
+              <button type="button" class="back-button" onclick="showFirstSignupTab()">
+                <!--img src="" alt=""-->&lt;</button>
             </div>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-content fullscreen class="ion-padding">
-          <ion-item>
-            <div class="profilWrapper">
-              <img src="profilBillede.jpg">
-              <div class="foelgerContainer">
-                <div class="antalOpslag">
-                  <h1>Opslag</h1>
-                  <h2>1</h2>
-                </div>
-                <div class="antalFoelgere">
-                  <h1>Følgere</h1>
-                  <h2>3</h2>
-                </div>
-                <div class="antalFulgte">
-                  <h1>Følger</h1>
-                  <h2>1</h2>
-                </div>
-              </div>
-              <h1>navn</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
-              <button class="redigerKnap">Rediger profil</button>
+            <h1 class="pangolin">Oplysninger om dig</h1>
+            <div>
+              <!-- empty space -->
             </div>
-          </ion-item>
-          <section class="mineOpslag">
-          <ion-card>
-            <img class="cardImg" src="cardImgIndex" />
-            <ion-card-header>
-              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h2 class="afstand">3.1 km</h2>
-              <h2 class="pris">40 kr</h2>
-            </ion-card-content>
-          </ion-card>
-          <ion-card>
-            <img class="cardImg" src="cardImgIndex" />
-            <ion-card-header>
-              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h2 class="afstand">3.1 km</h2>
-              <h2 class="pris">40 kr</h2>
-            </ion-card-content>
-          </ion-card>
-          <ion-card>
-            <img class="cardImg" src="cardImgIndex" />
-            <ion-card-header>
-              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h2 class="afstand">3.1 km</h2>
-              <h2 class="pris">40 kr</h2>
-            </ion-card-content>
-          </ion-card>
-          <ion-card>
-            <img class="cardImg" src="cardImgIndex" />
-            <ion-card-header>
-              <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <h2 class="afstand">3.1 km</h2>
-              <h2 class="pris">40 kr</h2>
-            </ion-card-content>
-          </ion-card>
+          </div>
+          <div class="form-element">
+            <input type="text" id="signup-first-name" required>
+            <label for="signup-first-name">fornavn</label>
+          </div>
+          <div class="form-element">
+            <input type="text" id="signup-last-name" required>
+            <label for="signup-last-name">efternavn</label>
+          </div>
+          <div class="form-element">
+            <input type="text" id="signup-address" required>
+            <label for="signup-address">adresse</label>
+          </div>
+          <div class="form-element-double">
+            <div class="form-element">
+              <input type="text" id="signup-city" required>
+              <label for="signup-city">by</label>
+            </div>
+            <div class="form-element">
+              <input type="text" id="signup-postal" maxlength="4" required>
+              <label for="signup-postal">postnr</label>
+            </div>
+          </div>
+          <div class="form-element">
+            <input type="phone" id="signup-phone" required>
+            <label for="signup-phone">telefon</label>
+          </div>
+          <div class="form-element-checkbox-list">
+            <div>
+              <label>fortrukne betalingsformer</label>
+            </div>
+            <div class="form-element">
+              <input type="checkbox" id="signup-cash">
+              <label for="signup-cash">Kontant</label>
+            </div>
+            <div class="form-element">
+              <input type="checkbox" id="signup-mobilepay">
+              <label for="signup-mobilepay">MobilePay</label>
+            </div>
+          </div>
+          <button type="button" onclick="signupUser()" class="form-button">Opret bruger</button>
+        </div>
+      </form>
+    </section>
 
+    <section id="login-form" class="welcome-tab" style="display: none;">
+      <form>
+        <div class="form-header">
+          <div>
+            <button type="button" class="back-button" onclick="showWelcomeIndex()">
+              <!--img src="" alt=""-->&lt;</button>
+          </div>
+          <h1 class="pangolin">Log ind</h1>
+          <div>
+            <!-- empty space -->
+          </div>
+        </div>
+        <div class="form-element">
+          <input type="email" id="login-email" required>
+          <label for="login-email">e-mail</label>
+        </div>
+        <div class="form-element">
+          <input type="password" id="login-password" required>
+          <label for="login-password">adgangskode</label>
+          <p class="form-forgot-password">Glemt din adgangskode?</p>
+        </div>
+        <button type="button" onclick="loginUser()" class="form-button">Log ind</button>
+      </form>
+    </section>
+  </section>
+
+  <!------------ home ------------>
+  <section id="home" class="tab" style="display: none;">
+    <header>
+      <div>
+        <img id="logo" src="img/logo_app_hvid.png" alt="Logo theBIGfridge">
+      </div>
+      <h1 class="pangolin">Køleskab</h1>
+      <div>
+        <!-- add search function -->
+        <a onclick="// search function">
+          <img src="img/soeg.svg" alt="søg ikon">
+        </a>
+        <a onclick="showTab('messenger')">
+          <img src="img/chat-two.svg" alt="chat ikon">
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- FRUGT & GRØNT -->
+      <section class="category">
+        <div class="category-header">
+          <h2 class="category-title pangolin">Frugt & grønt</h2>
+          <button onclick="showCategory">Se alle opslag</button>
+        </div>
+        <section class="slides">
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <h3 class="card-title">Eksempel</h3>
+            <div class="card-content">
+              <p>3.1 km</p>
+              <p>40 kr</p>
+            </div>
           </section>
-        </ion-content>
-      </ion-tab>
 
-      <!------------ Menu ------------>
-      <ion-tab tab="menu">
-        <ion-header>
-          <ion-toolbar color="yellow">
-            <div>
-              <div>
-                <img id="logo" src="img/logo_app_hvid.png" alt ="Logo theBIGfridge">
-              </div>
-              <h1>Menu</h1>
-              <div>
-                <!-- empty space -->
-              </div>
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 2</h3>
             </div>
-          </ion-toolbar>
-        </ion-header>
-
-        <ion-content fullscreen class="ion-padding">
-          <p>Menu</p>
-          <button id="logout" type="button" onclick="logoutUser()">Log ud</button>
-        </ion-content>
-      </ion-tab>
-
-      <!------------ Beskeder ------------>
-      <ion-tab tab="messages">
-        <ion-header>
-          <ion-toolbar color="yellow">
-            <div>
-              <div>
-
-              </div>
-              <h1>Chat</h1>
-              <div>
-                <!-- empty space -->
-              </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
             </div>
-          </ion-toolbar>
-        </ion-header>
+          </section>
 
-        <ion-content fullscreen class="ion-padding">
-          <h1>Beskeder</h1>
-        </ion-content>
-      </ion-tab>
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 3</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+        </section>
+      </section>
 
-      <!------------ Tabbar ------------>
-      <ion-tab-bar style="display: none;" slot="bottom">
-        <ion-tab-button tab="home">
-          <ion-label>Køleskab</ion-label>
-          <ion-icon name="home"></ion-icon>
-        </ion-tab-button>
-        <ion-tab-button tab="follows">
-          <ion-label>Følger Feed</ion-label>
-          <ion-icon name="people"></ion-icon>
-        </ion-tab-button>
-        <ion-tab-button onclick="presentModal()">
-          <ion-label>Opret Opslag</ion-label>
-          <ion-icon name="add"></ion-icon>
-        </ion-tab-button>
-        <ion-tab-button tab="profile">
-          <ion-label>Profil</ion-label>
-          <ion-icon name="person"></ion-icon>
-        </ion-tab-button>
-        <ion-tab-button tab="menu">
-          <ion-label>Menu</ion-label>
-          <ion-icon name="menu"></ion-icon>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-app>
+      <!-- BAGVÆRK -->
+      <section class="category">
+        <div class="category-header">
+          <h2 class="category-title pangolin">Bagværk</h2>
+          <button onclick="showCategory">Se alle opslag</button>
+        </div>
+        <section class="slides">
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <h3 class="card-title">Eksempel</h3>
+            <div class="card-content">
+              <p>3.1 km</p>
+              <p>40 kr</p>
+            </div>
+          </section>
 
-  <!-- ionic framework -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
-  <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 2</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
 
-  <!-- vue.js framework -->
-  <!-- development version, includes helpful console warnings -->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 3</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+        </section>
+      </section>
 
-  <!-- firebase -->
-  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
-  <!-- firebase configuration and authentication -->
-  <script src="js/auth.js"></script>
-  <!--script src="js/auth"></script-->
+      <!-- KØD -->
+      <section class="category">
+        <div class="category-header">
+          <h2 class="category-title pangolin">Kød</h2>
+          <button onclick="showCategory">Se alle opslag</button>
+        </div>
+        <section class="slides">
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <h3 class="card-title">Eksempel</h3>
+            <div class="card-content">
+              <p>3.1 km</p>
+              <p>40 kr</p>
+            </div>
+          </section>
 
-  <!-- main app.js file -->
-  <script src="js/app.js"></script>
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 2</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 3</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- MEJERI & ÆG -->
+      <section class="category">
+        <div class="category-header">
+          <h2 class="category-title pangolin">Mejeri & æg</h2>
+          <button onclick="showCategory">Se alle opslag</button>
+        </div>
+        <section class="slides">
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <h3 class="card-title">Eksempel</h3>
+            <div class="card-content">
+              <p>3.1 km</p>
+              <p>40 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 2</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 3</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <!-- RESTER -->
+      <section class="category">
+        <div class="category-header">
+          <h2 class="category-title pangolin">Rester</h2>
+          <button onclick="showCategory">Se alle opslag</button>
+        </div>
+        <section class="slides">
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <h3 class="card-title">Eksempel</h3>
+            <div class="card-content">
+              <p>3.1 km</p>
+              <p>40 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 2</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 3</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+        </section>
+      </section>
+
+    </main>
+  </section>
+
+  <!------------ Følger ------------>
+  <section id="follow" class="tab" style="display: none;">
+    <header>
+      <div>
+        <img id="logo" src="img/logo_app_hvid.png" alt="Logo theBIGfridge">
+      </div>
+      <h1 class="pangolin">Følger Feed</h1>
+      <div>
+        <!-- add search function -->
+        <a onclick="// search function">
+          <img src="img/soeg.svg" alt="søg ikon">
+        </a>
+        <a onclick="showTab('messenger')">
+          <img src="img/chat-two.svg" alt="chat ikon">
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <p>Følger</p>
+    </main>
+  </section>
+
+  <!------------ Profil ------------>
+  <section id="profile" class="tab" style="display: none;">
+    <header>
+      <div>
+        <img id="logo" src="img/logo_app_hvid.png" alt="Logo theBIGfridge">
+      </div>
+      <h1 class="pangolin">Min profil</h1>
+      <div>
+        <a onclick="showTab('messenger')">
+          <img src="img/chat-two.svg" alt="chat ikon">
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <ion-item>
+        <div class="profilWrapper">
+          <img src="profilBillede.jpg">
+          <div class="foelgerContainer">
+            <div class="antalOpslag">
+              <h1>Opslag</h1>
+              <h2>1</h2>
+            </div>
+            <div class="antalFoelgere">
+              <h1>Følgere</h1>
+              <h2>3</h2>
+            </div>
+            <div class="antalFulgte">
+              <h1>Følger</h1>
+              <h2>1</h2>
+            </div>
+          </div>
+          <h1>navn</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
+          <button class="redigerKnap">Rediger profil</button>
+        </div>
+      </ion-item>
+      <section class="mineOpslag">
+        <ion-card>
+          <img class="cardImg" src="cardImgIndex" />
+          <ion-card-header>
+            <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="afstand">3.1 km</h2>
+            <h2 class="pris">40 kr</h2>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <img class="cardImg" src="cardImgIndex" />
+          <ion-card-header>
+            <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="afstand">3.1 km</h2>
+            <h2 class="pris">40 kr</h2>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <img class="cardImg" src="cardImgIndex" />
+          <ion-card-header>
+            <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="afstand">3.1 km</h2>
+            <h2 class="pris">40 kr</h2>
+          </ion-card-content>
+        </ion-card>
+        <ion-card>
+          <img class="cardImg" src="cardImgIndex" />
+          <ion-card-header>
+            <ion-card-title class="cardTitleIndex">Eksempel</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2 class="afstand">3.1 km</h2>
+            <h2 class="pris">40 kr</h2>
+          </ion-card-content>
+        </ion-card>
+
+      </section>
+    </main>
+  </section>
+
+  <!------------ Menu ------------>
+  <section id="menu" class="tab" style="display: none;">
+    <header>
+      <div>
+        <img id="logo" src="img/logo_app_hvid.png" alt="Logo theBIGfridge">
+      </div>
+      <h1 class="pangolin">Menu</h1>
+      <div>
+        <!-- empty space -->
+      </div>
+    </header>
+
+    <main>
+      <p>Menu</p>
+      <button id="logout" type="button" onclick="logoutUser()">Log ud</button>
+    </main>
+  </section>
+
+  <!------------ Opslag ------------>
+  <section id="modal-opslag" class="modal">
+    <header>
+      <div>
+        <!-- empty space -->
+      </div>
+      <h1 class="pangolin">Vælg billede</h1>
+      <div>
+        <!-- empty space -->
+      </div>
+    </header>
+
+    <main>
+      <!--- lav profil bar --->
+      <ion-item>
+        Profil Bar
+      </ion-item>
+
+      <section class="opslagWrapper">
+        <img class="opslagImg" src="./opslag.jpg">
+        <div class="opslagInfo">
+          <h1 class="opslagTitel">Eksempel</h1>
+          <h2 class="opslagPris">40 kr</h2>
+          <h3 class="opslagMaengde">Pluk selv</h3>
+          <h3 class="opslagAfstand">3.1 km</h3>
+          <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
+
+          <div class="kvalitetInfo">
+            <div class="holdbarhed">
+              <h3>Holdbarhed</h3>
+              <img src="holdbarhedicon.svg" alt="Holdbarhed">
+              <h2>22.dec.</h2>
+            </div>
+            <div class="kvalitet">
+              <h3>Kvalitet</h3>
+              <img src="kvaliteticon.svg" alt="Kvalitet">
+              <h2>22.dec.</h2>
+            </div>
+          </div>
+        </div>
+        <button class="skriv">Skriv til bruger</button>
+
+      </section>
+
+
+    </main>
+  </section>
+
+  <!------------ Opret opslag ------------>
+  <section id="modal-create" class="modal" style="display: none;">
+    <header>
+      <div>
+        <!-- empty space -->
+      </div>
+      <h1 class="pangolin">Vælg billede</h1>
+      <div>
+        <!-- empty space -->
+      </div>
+    </header>
+
+    <main>
+      <!--- lav profil bar --->
+      <ion-item>
+        Profil Bar
+      </ion-item>
+
+      <section class="opslagWrapper">
+        <img class="opslagImg" src="./opslag.jpg">
+        <div class="opslagInfo">
+          <h1 class="opslagTitel">Eksempel</h1>
+          <h2 class="opslagPris">40 kr</h2>
+          <h3 class="opslagMaengde">Pluk selv</h3>
+          <h3 class="opslagAfstand">3.1 km</h3>
+          <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
+
+          <div class="kvalitetInfo">
+            <div class="holdbarhed">
+              <h3>Holdbarhed</h3>
+              <img src="holdbarhedicon.svg" alt="Holdbarhed">
+              <h2>22.dec.</h2>
+            </div>
+            <div class="kvalitet">
+              <h3>Kvalitet</h3>
+              <img src="kvaliteticon.svg" alt="Kvalitet">
+              <h2>22.dec.</h2>
+            </div>
+          </div>
+        </div>
+        <button class="skriv">Skriv til bruger</button>
+
+      </section>
+
+
+    </main>
+  </section>
+
+  <!------------ Beskeder ------------>
+  <section id="messages" class="tab" style="display: none;">
+    <header>
+      <div>
+        <!-- back button here -->
+      </div>
+      <h1 class="pangolin">Chat</h1>
+      <div>
+        <!-- add search function -->
+        <a onclick="// search function">
+          <img src="img/soeg.svg" alt="søg ikon">
+        </a>
+        <a onclick="showTab('messenger')">
+          <img src="img/chat-two.svg" alt="chat ikon">
+        </a>
+      </div>
+    </header>
+
+    <ion-content fullscreen class="ion-padding">
+      <h1>Beskeder</h1>
+    </ion-content>
+    </ion-tab>
+
+    <!-- Single Page Application Script -->
+    <script src="js/spa.js"></script>
+
+    <!-- vue.js framework -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <!-- firebase configuration and authentication -->
+    <script src="js/auth.js"></script>
+
+    <!-- main app.js file -->
+    <script src="js/app.js"></script>
 </body>
 
 </html>

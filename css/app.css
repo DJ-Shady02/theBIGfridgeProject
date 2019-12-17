@@ -1,63 +1,26 @@
 * {
   padding: 0;
   margin: 0;
-  /* Borderbox set by Ionic */
+  box-sizing: border-box;
 }
 
 :root {
-  --ion-color-yellow: #E7B73D;
-  --ion-color-yellow-rgb: 231 183 61;
-  --ion-color-yellow-contrast: #ffffff;
-  --ion-color-yellow-contrast-rgb: 255,255,255;
-  --ion-color-yellow-shade: #ff0000;
-  --ion-color-yellow-tint: #ff0000;
+  --yellow: #E7B73D;
+  --yellow-rgb: 231 183 61;
 
-  --ion-color-orange: #EA951D;
-  --ion-color-orange-rgb: 234 149 29;
-  --ion-color-orange-contrast: #ffffff;
-  --ion-color-orange-contrast-rgb: 255,255,255;
-  --ion-color-orange-shade: #ff0000;
-  --ion-color-orange-tint: #ff0000;
+  --orange: #EA951D;
+  --orange-rgb: 234 149 29;
 
-  --ion-color-darkOrange: #C86001;
-  --ion-color-darkOrange-rgb: 200 96 1;
-  --ion-color-darkOrange-contrast: #ffffff;
-  --ion-color-darkOrange-contrast-rgb: 255,255,255;
-  --ion-color-darkOrange-shade: #ff0000;
-  --ion-color-darkOrange-tint: #ff0000;
+  --darkOrange: #C86001;
+  --darkOrange-rgb: 200 96 1;
 
   --white: #FFFFFF;
   --lightGrey: #F4F4F4;
   --grey: #ADADAD;
   --darkGrey: #7C7C7C;
   --black: #050706;
-}
 
-.ion-color-yellow {
-  --ion-color-base: var(--ion-color-yellow);
-  --ion-color-base-rgb: var(--ion-color-yellow-rgb);
-  --ion-color-contrast: var(--ion-color-yellow-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-yellow-contrast-rgb);
-  --ion-color-shade: var(--ion-color-yellow-shade);
-  --ion-color-tint: var(--ion-color-yellow-tint);
-}
-
-.ion-color-orange {
-  --ion-color-base: var(--ion-color-orange);
-  --ion-color-base-rgb: var(--ion-color-orange-rgb);
-  --ion-color-contrast: var(--ion-color-orange-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-orange-contrast-rgb);
-  --ion-color-shade: var(--ion-color-orange-shade);
-  --ion-color-tint: var(--ion-color-orange-tint);
-}
-
-.ion-color-orange {
-  --ion-color-base: var(--ion-color-darkOrange);
-  --ion-color-base-rgb: var(--ion-color-darkOrange-rgb);
-  --ion-color-contrast: var(--ion-color-darkOrange-contrast);
-  --ion-color-contrast-rgb: var(--ion-color-darkOrange-contrast-rgb);
-  --ion-color-shade: var(--ion-color-darkOrange-shade);
-  --ion-color-tint: var(--ion-color-darkOrange-tint);
+  --shadow-rgba: rgba(0, 0, 0, 0.15);
 }
 
 html {
@@ -65,45 +28,74 @@ html {
   font-size: 15px;
 }
 
+nav {
+  height: 3.334rem;
+  color: var(--darkGrey);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--lightGrey);
+}
+
+nav a {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  text-align: center;
+}
+
+nav img {
+  height: 2rem;
+}
+
+.tab {
+  min-height: calc(100vh - 3.334rem);
+  padding-bottom: 4.334rem; /* spacing for tabbar + 15px margin */
+}
+
+.pangolin {
+  font-family: 'Pangolin', cursive;
+  font-weight: lighter; /* make it "normal" */
+}
+
 /* ---------- TOP TABBAR ---------- */
 
-ion-header ion-toolbar > div {
+header {
+  background-color: var(--yellow);
+  color: var(--white);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 3.334rem;
+  width: 100%;
   padding: 0 1.334rem;
 }
 
-ion-header ion-toolbar div div { /* Tabbar content except h1 */
+header div { /* Tabbar content except h1 */
   width: 65px;
   flex-shrink: 0;
 }
 
-ion-header ion-toolbar div div:last-child { /* The right div in tabbar */
+header div:last-child { /* The right div in header */
   text-align: right;
   display: flex;
+  justify-content: flex-end;
 }
 
-ion-header ion-toolbar div div:last-child ion-tab-button {
+header div:last-child a {
   width: 2rem;
   height: 2rem;
   margin-left: 0.334rem;
   background: none;
-  color: var(--ion-color-yellow-contrast);
+  color: var(--yellow-contrast);
 }
 
-ion-header ion-toolbar #logo {
+header #logo {
   height: 2rem;
 }
 
-ion-header ion-toolbar ion-icon {
-  height: 2rem;
-  width: 2rem;
-}
-
-ion-header ion-toolbar h1 {
+header h1 {
   font-size: 1.33rem;
   text-align: center;
   width: 100%;
@@ -113,14 +105,14 @@ ion-header ion-toolbar h1 {
 /* ---------- BOTTOM TABBAR ---------- */
 
 .tab-selected {
-  color: var(--ion-color-orange);
+  color: var(--orange);
 }
 
 /* ---------- WELCOME SCREEN ---------- */
 
-#welcome .colouring-div {
-  background-color: var(--ion-color-yellow);
-  height: 100%;
+#welcome {
+  background-color: var(--yellow);
+  height: 100vh;
   text-align: center;
 }
 
@@ -137,9 +129,8 @@ ion-header ion-toolbar h1 {
 }
 
 #welcome #welcome-index p {
-  font-family: 'Pangolin', cursive;
   font-size: 2rem;
-  color: var(--ion-color-yellow-contrast);
+  color: var(--white);
 }
 
 #welcome #welcome-index div {
@@ -149,9 +140,9 @@ ion-header ion-toolbar h1 {
 #welcome button {
   width: 100%;
   height: 3.334rem;
-  background-color: var(--ion-color-darkOrange);
+  background-color: var(--darkOrange);
   border-radius: 1rem;
-  color: var(--ion-color-darkOrange-contrast);
+  color: var(--white);
   font-size: 1.334rem;
   text-transform: uppercase;
   border: none;
@@ -162,7 +153,7 @@ ion-header ion-toolbar h1 {
 }
 
 form {
-  background-color: var(--ion-color-yellow-contrast);
+  background-color: var(--white);
   border-radius: 1rem;
   margin: 0 2rem;
   padding: 1.667rem;
@@ -172,8 +163,8 @@ form {
   width: 1.667rem;
   height: 100%;
   border-radius: 0;
-  background-color: var(--ion-color-orange-contrast);
-  color: var(--ion-color-orange);
+  background-color: var(--white);
+  color: var(--orange);
   font-size: 1.334rem;
 }
 
@@ -195,8 +186,7 @@ form .form-header div:first-of-type {
 form .form-header h1 {
   width: 100%;
   margin: 0;
-  font-family: 'Pangolin', cursive;
-  color: var(--ion-color-orange);
+  color: var(--orange);
   font-size: 1.334rem;
   text-align: center;
 }
@@ -225,11 +215,11 @@ form .form-element input {
 }
 
 form .form-element input:focus {
-  border-color: var(--ion-color-orange);
+  border-color: var(--orange);
 }
 
 form .form-element input:focus + label {
-  color: var(--ion-color-orange);
+  color: var(--orange);
 }
 
 form .form-forgot-password {
@@ -248,7 +238,7 @@ form .form-forgot-password {
   border-radius: 0.5rem;
   width: auto;
   padding: 0.334rem 1.5rem;
-  background-color: var(--ion-color-orange);
+  background-color: var(--orange);
 }
 
 form .form-element-double {
@@ -288,12 +278,80 @@ form .form-element-checkbox-list .form-element label {
   color: var(--darkGrey);
 }
 
-.card {
-  width: 90%;
-  height: 156px;
+/* ---------- HOME ---------- */
+
+.category .category-header {
+  margin: 1rem 1rem 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.category .category-header .category-title {
+  color: var(--grey);
+}
 
+.category .category-header button {
+  border: none;
+  border-radius: 0.334rem;
+  padding: 0.2rem 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.667rem;
+  color: var(--white);
+  background-color: var(--yellow);
+  height: 20px;
+}
+
+.category .slides {
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-bottom: 2px; /* padding for the card shadow to have space */
+}
+
+.category .slides .card {
+  display: inline-block;
+  width: 200px;
+  height: 156px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  box-shadow: 0px 2px 4px var(--shadow-rgba);
+  margin-right: 1rem;
+  border-radius: 2px;
+}
+
+.category .slides .card:first-of-type {
+  margin-left: 1rem;
+}
+
+.category .slides .card:last-of-type {
+  margin-right: 0;
+}
+
+.category .slides .card .card-img {
+  width: 100%;
+  height: 120px;
+  border-radius: 2px 2px 0 0;
+}
+
+.category .slides .card .card-title {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0 0.334rem;
+  margin-top: -2px;
+  color: var(--yellow);
+}
+
+.category .slides .card .card-content {
+  margin: 0 0.334rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category .slides .card .card-content p {
+  color: var(--grey);
+  font-size: 0.8rem;
+}
 
 /* --- opslag side ---*/
 
@@ -360,3 +418,10 @@ font-size: 14pt;
 }
 
 /* Profil side */
+
+
+/* ---------- MODALS ---------- */
+
+.modal {
+  display: none;
+}
