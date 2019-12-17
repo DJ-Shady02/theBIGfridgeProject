@@ -7,19 +7,15 @@
 :root {
   --yellow: #E7B73D;
   --yellow-rgb: 231 183 61;
-
   --orange: #EA951D;
   --orange-rgb: 234 149 29;
-
   --darkOrange: #C86001;
   --darkOrange-rgb: 200 96 1;
-
   --white: #FFFFFF;
   --lightGrey: #F4F4F4;
   --grey: #ADADAD;
   --darkGrey: #7C7C7C;
   --black: #050706;
-
   --shadow-rgba: rgba(0, 0, 0, 0.15);
 }
 
@@ -42,6 +38,11 @@ nav a {
   flex-direction: column;
   width: 20%;
   text-align: center;
+  text-decoration: none;
+}
+
+nav a.active {
+  color: var(--orange);
 }
 
 nav img {
@@ -50,16 +51,17 @@ nav img {
 
 .tab {
   min-height: calc(100vh - 3.334rem);
-  padding-bottom: 4.334rem; /* spacing for tabbar + 15px margin */
+  padding-bottom: 4.334rem;
+  /* spacing for tabbar + 15px margin */
 }
 
 .pangolin {
   font-family: 'Pangolin', cursive;
-  font-weight: lighter; /* make it "normal" */
+  font-weight: lighter;
+  /* make it "normal" */
 }
 
 /* ---------- TOP TABBAR ---------- */
-
 header {
   background-color: var(--yellow);
   color: var(--white);
@@ -72,12 +74,14 @@ header {
   padding: 0 1.334rem;
 }
 
-header div { /* Tabbar content except h1 */
+header div {
+  /* Tabbar content except h1 */
   width: 65px;
   flex-shrink: 0;
 }
 
-header div:last-child { /* The right div in header */
+header div:last-child {
+  /* The right div in header */
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -102,14 +106,7 @@ header h1 {
   margin: 0;
 }
 
-/* ---------- BOTTOM TABBAR ---------- */
-
-.tab-selected {
-  color: var(--orange);
-}
-
 /* ---------- WELCOME SCREEN ---------- */
-
 #welcome {
   background-color: var(--yellow);
   height: 100vh;
@@ -201,7 +198,8 @@ form .form-element label {
   text-transform: uppercase;
   font-size: 0.8rem;
   color: var(--grey);
-  order: -1; /* Position the label above the input, as the HTML needs to be  */
+  order: -1;
+  /* Position the label above the input, as the HTML needs to be  */
   text-align: left;
 }
 
@@ -218,7 +216,7 @@ form .form-element input:focus {
   border-color: var(--orange);
 }
 
-form .form-element input:focus + label {
+form .form-element input:focus+label {
   color: var(--orange);
 }
 
@@ -279,7 +277,6 @@ form .form-element-checkbox-list .form-element label {
 }
 
 /* ---------- HOME ---------- */
-
 .category .category-header {
   margin: 1rem 1rem 0.5rem 1rem;
   display: flex;
@@ -306,7 +303,8 @@ form .form-element-checkbox-list .form-element label {
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
-  padding-bottom: 2px; /* padding for the card shadow to have space */
+  padding-bottom: 2px;
+  /* padding for the card shadow to have space */
 }
 
 .category .slides .card {
@@ -322,10 +320,6 @@ form .form-element-checkbox-list .form-element label {
 
 .category .slides .card:first-of-type {
   margin-left: 1rem;
-}
-
-.category .slides .card:last-of-type {
-  margin-right: 0;
 }
 
 .category .slides .card .card-img {
@@ -353,24 +347,21 @@ form .form-element-checkbox-list .form-element label {
   font-size: 0.8rem;
 }
 
-
-
 /* --- opslag side ---*/
-
 .profilBar {
   height: 75px;
   padding: 0px;
   display: flex;
-
 }
+
 .profilInfoContainer {
   margin-left: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 10px;
-
 }
+
 .profilInfoContainer h1 {
   color: #7c7c7c;
   font-size: 1.5rem;
@@ -392,10 +383,8 @@ form .form-element-checkbox-list .form-element label {
   border-radius: 6px;
 }
 
-
 .opslagWrapper {
   margin: 0 -5%;
-
 }
 .opslagWrapper img {
   width: 100%;
@@ -407,8 +396,8 @@ form .form-element-checkbox-list .form-element label {
   color: #E7B73D;
   font-size: 24pt;
   font-family: 'Raleway', sans-serif;
-
 }
+
 .opslagPris {
   grid-area: p;
   font-size: 24pt;
@@ -416,12 +405,14 @@ form .form-element-checkbox-list .form-element label {
   justify-content: flex-end;
   font-family: 'Raleway', sans-serif;
 }
+
 .opslagMaengde {
   grid-area: m;
   color: #ADADAD;
   font-size: 14pt;
   font-family: 'Raleway', sans-serif;
 }
+
 .opslagAfstand {
   grid-area: a;
   color: #ADADAD;
@@ -430,18 +421,20 @@ form .form-element-checkbox-list .form-element label {
   justify-content: flex-end;
   font-family: 'Raleway', sans-serif;
 }
+
 .opslagBeskrivelse {
   grid-area: b;
   font-family: 'Raleway', sans-serif;
   font-size: 16pt;
 }
+
 .holdbarhed {
   grid-area: h;
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
+
 .kvalitet {
   grid-area: kv;
   display: flex;
@@ -455,10 +448,9 @@ form .form-element-checkbox-list .form-element label {
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
-  ". h . kv";
+    ". h . kv";
   margin-top: 25px;
 }
-
 
 .opslagInfo {
   margin: 0 5%;
@@ -466,10 +458,10 @@ form .form-element-checkbox-list .form-element label {
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
-  "t t p p"
-  "m m a a"
-  "b b b b"
-  "k k k k";
+    "t t p p"
+    "m m a a"
+    "b b b b"
+    "k k k k";
 }
 
 
@@ -478,131 +470,111 @@ form .form-element-checkbox-list .form-element label {
   font-family: 'Raleway', sans-serif;
   color: #ADADAD;
 }
+
 .kvalitetDato {
   font-size: 18pt;
   font-family: 'Raleway', sans-serif;
   color: #E7B73D;
-
 }
-
 
 .skriv {
   width: 100%;
-
-height: 52px;
-color: white;
-background-color: #E7B73D;
-position: fixed;
-bottom: 0;
-font-family: 'Pangolin', cursive;
-font-size: 14pt;
-left: 0;
+  height: 52px;
+  color: white;
+  background-color: #E7B73D;
+  position: fixed;
+  bottom: 0;
+  font-family: 'Pangolin', cursive;
+  font-size: 14pt;
+  left: 0;
 }
 
 /* Profil side */
-.foelgerContainer {
-grid-area: fc;
-display: flex;
-flex-direction: row;
-justify-content: center;
-padding-left: 20px;
-
-}
-
-.foelgerContainer h1 {
-color: #adadad;
-font-size: 10pt;
-font-family: 'Raleway', sans-serif;
-margin-top: -5%;
-
-
-
-}
-
-.foelgerContainer h2 {
-color: #E7B73D;
-font-size: 22pt;
-font-family: 'Raleway', sans-serif;
-display: flex;
-align-self: center;
-
-
-}
-
-.antalOpslag {
-display: flex;
-flex-direction: column-reverse;
-padding: 0 15px;
-padding-bottom: 20px;
-}
-
-.antalFoelgere {
+.follower-container {
+  grid-area: fc;
   display: flex;
-flex-direction: column-reverse;
-padding: 0 15px;
-padding-bottom: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
-.antalFulgte {
+.follower-container div {
   display: flex;
-flex-direction: column-reverse;
-padding: 0 15px;
-padding-bottom: 20px;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
 }
 
-.profilWrapper img {
-grid-area: im;
-width: 90px;
-height: 90px;
-object-fit: cover;
-border-radius: 6px;
+.follower-container div p {
+  color: var(--grey);
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
-.profilWrapper h1 {
-grid-area: na;
-margin: 5px 0 2px 0;
-color: var(--grey);
-font-family: 'Raleway', sans-serif;
+.follower-container div p.pangolin {
+  color: var(--orange);
+  font-size: 1.6rem;
 }
-.profilWrapper p {
-grid-area: be;
-font-family: 'Raleway', sans-serif;
+
+.follower-container h1 {
+  color: #adadad;
+  font-size: 10pt;
+  margin-top: -5%;
 }
+
+.profile-wrapper img {
+  grid-area: im;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.profile-wrapper h2 {
+  grid-area: na;
+  margin: 5px 0 2px 0;
+  color: var(--grey);
+}
+
+.profile-wrapper > p { /* ">" to not hit follower-container */
+  grid-area: be;
+}
+
 .redigerKnap {
-grid-area: re;
-
-background-color: #F7F7F7;
-margin: 10px 0 0 0;
-height: 20px;
-border-radius: 3px;
-width: 100%;
-justify-content: center;
-font-size: 8pt;
-font-family: 'Raleway', sans-serif;
+  grid-area: re;
+  background-color: #F7F7F7;
+  margin: 10px 0 0 0;
+  height: 20px;
+  border: 1px solid var(--grey);
+  border-radius: 3px;
+  width: 100%;
+  justify-content: center;
+  font-size: 8pt;
+  font-family: 'Raleway', sans-serif;
 }
 
-.profilWrapper {
+.profile-wrapper {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: auto;
   grid-template-areas:
-  "im fc fc fc"
-  "na na na na"
-  "be be be be"
-  "re re re re"
+    "im fc fc fc"
+    "na na na na"
+    "be be be be"
+    "re re re re"
   ;
   padding: 1rem;
   box-shadow: 0 2px 4px var(--shadow-rgba);
   margin-bottom: 1rem;
-
 }
+
 .card-container {
-margin-left: 1rem;
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-
+  margin-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
 .card-container .card {
   display: inline-block;
   width: 45%;
@@ -614,8 +586,6 @@ flex-wrap: wrap;
   border-radius: 2px;
   margin-bottom: 1rem;
 }
-
-
 
 .card-container .card .card-img {
   width: 100%;
@@ -641,19 +611,18 @@ flex-wrap: wrap;
   color: var(--grey);
   font-size: 0.8rem;
 }
- #profil-opslag-titel {
+
+#profil-opslag-titel {
   color: var(--grey);
   font-size: 1rem;
   font-family: 'Raleway', sans-serif;
   margin-bottom: 1rem;
   text-align: center;
-
 }
 
 
 
 /* ---------- MODALS ---------- */
-
 .modal {
   display: none;
   position: fixed;
