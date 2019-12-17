@@ -183,9 +183,10 @@
         <div class="category-header">
           <h2 class="category-title pangolin">Frugt & grønt</h2>
           <button onclick="showCategory">Se alle opslag</button>
+
         </div>
         <section class="slides">
-          <section class="card">
+          <section class="card" onclick="openModal()">
             <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
             <h3 class="card-title">Eksempel</h3>
             <div class="card-content">
@@ -444,8 +445,8 @@
       <h2 id="profil-opslag-titel">Mine opslag</h2>
       <section class="card-container">
 
-        <section class="card">
-          <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+        <section class="card" onclick="openModal()">
+          <img src="/img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
           <div class="card-header">
             <h3 class="card-title">Eksempel 1</h3>
           </div>
@@ -476,6 +477,7 @@
         </section>
 
       </section>
+    </section>
 
   <!------------ Menu ------------>
   <section id="menu" class="tab" style="display: none;">
@@ -496,52 +498,73 @@
   </section>
 
   <!------------ Opslag ------------>
-  <section id="modal-opslag" class="modal">
-    <header>
-      <div>
-        <!-- empty space -->
-      </div>
-      <h1 class="pangolin">Vælg billede</h1>
-      <div>
-        <!-- empty space -->
-      </div>
+
+
+<!-- The Modal -->
+<section id="myModal" class="modal">
+
+
+
+
+  <div class="modal-content">
+      <header class="modal-header">
+        <div>
+          <span class="close">&times;</span>
+          <!-- empty space -->
+        </div>
+        <h1 class="pangolin">Vælg billede</h1>
+        <div>
+          <!-- empty space -->
+        </div>
     </header>
 
-    <main>
-      <!--- lav profil bar --->
-      <ion-item>
-        Profil Bar
-      </ion-item>
+      <section id="modal-opslag" class="modal-body">
 
-      <section class="opslagWrapper">
-        <img class="opslagImg" src="./opslag.jpg">
-        <div class="opslagInfo">
-          <h1 class="opslagTitel">Eksempel</h1>
-          <h2 class="opslagPris">40 kr</h2>
-          <h3 class="opslagMaengde">Pluk selv</h3>
-          <h3 class="opslagAfstand">3.1 km</h3>
-          <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
 
-          <div class="kvalitetInfo">
-            <div class="holdbarhed">
-              <h3>Holdbarhed</h3>
-              <img src="holdbarhedicon.svg" alt="Holdbarhed">
-              <h2>22.dec.</h2>
+        <main>
+          <!--- lav profil bar --->
+          <ion-item>
+            Profil Bar
+          </ion-item>
+
+          <section class="opslagWrapper">
+            <img class="opslagImg" src="/img/img-placeholder.jpg">
+            <div class="opslagInfo">
+              <h1 class="opslagTitel">Eksempel</h1>
+              <h2 class="opslagPris">40 kr</h2>
+              <h3 class="opslagMaengde">Pluk selv</h3>
+              <h3 class="opslagAfstand">3.1 km</h3>
+              <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
+
+              <div class="kvalitetInfo">
+                <div class="holdbarhed">
+                  <h3>Holdbarhed</h3>
+                  <img src="holdbarhedicon.svg" alt="Holdbarhed">
+                  <h2>22.dec.</h2>
+                </div>
+                <div class="kvalitet">
+                  <h3>Kvalitet</h3>
+                  <img src="kvaliteticon.svg" alt="Kvalitet">
+                  <h2>22.dec.</h2>
+                </div>
+              </div>
             </div>
-            <div class="kvalitet">
-              <h3>Kvalitet</h3>
-              <img src="kvaliteticon.svg" alt="Kvalitet">
-              <h2>22.dec.</h2>
-            </div>
-          </div>
-        </div>
-        <button class="skriv">Skriv til bruger</button>
+            <button class="skriv">Skriv til bruger</button>
 
+          </section>
+
+
+        </main>
       </section>
 
+    <div class="modal-footer">
+      <button class="skriv">Skriv til bruger</button>
+    </div>
+  </div>
 
-    </main>
-  </section>
+</section>
+
+
 
   <!------------ Opret opslag ------------>
   <section id="modal-create" class="modal" style="display: none;">
