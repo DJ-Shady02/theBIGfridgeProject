@@ -6,7 +6,7 @@
   <title>theBIGfridge</title>
   <meta name='viewport' content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="theBIGfridge">
-  <meta name="author" content="Rasmus Cederdorff">
+  <meta name="author" content="Bruh">
   <link href="https://fonts.googleapis.com/css?family=Pangolin|Raleway&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -401,7 +401,52 @@
     </header>
 
     <main>
-      <p>Følger</p>
+
+      <section class="bruger-container">
+        <div class="bruger-wrapper">
+          <img class="bruger-billede" src="img/img-placeholder.jpg" alt="bruger uploadet billede">
+          <div class="bruger-info">
+            <h2>Navn Efternavn</h2>
+            <h3>Opslag fra Navn</h3>
+          </div>
+        </div>
+          <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
+      </section>
+
+      <section class="follower-container">
+        <section class="slides">
+          <section class="card" onclick="openModal()">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <h3 class="card-title">Eksempel</h3>
+            <div class="card-content">
+              <p>3.1 km</p>
+              <p>40 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 2</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
+            <div class="card-header">
+              <h3 class="card-title">Eksempel 3</h3>
+            </div>
+            <div class="card-content">
+              <p>2.2 km</p>
+              <p>10 kr</p>
+            </div>
+          </section>
+        </section>
+      </section>
     </main>
   </section>
 
@@ -503,16 +548,13 @@
 <!-- The Modal -->
 <section id="myModal" class="modal">
 
-
-
-
   <div class="modal-content">
       <header class="modal-header">
         <div>
           <span class="close">&times;</span>
           <!-- empty space -->
         </div>
-        <h1 class="pangolin">Vælg billede</h1>
+        <h1 class="pangolin">Opslag</h1>
         <div>
           <!-- empty space -->
         </div>
@@ -520,12 +562,18 @@
 
       <section id="modal-opslag" class="modal-body">
 
-
         <main>
           <!--- lav profil bar --->
-          <ion-item>
-            Profil Bar
-          </ion-item>
+          <section class="bruger-container">
+            <div class="bruger-wrapper">
+              <img class="bruger-billede" src="img/img-placeholder.jpg" alt="bruger uploadet billede">
+              <div class="bruger-info">
+                <h2>Navn Efternavn</h2>
+                <h3>Slået op d. 15 December</h3>
+              </div>
+            </div>
+              <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
+          </section>
 
           <section class="opslagWrapper">
             <img class="opslagImg" src="/img/img-placeholder.jpg">
@@ -567,51 +615,31 @@
 
 
   <!------------ Opret opslag ------------>
-  <section id="modal-create" class="modal" style="display: none;">
-    <header>
-      <div>
-        <!-- empty space -->
-      </div>
-      <h1 class="pangolin">Vælg billede</h1>
-      <div>
-        <!-- empty space -->
-      </div>
-    </header>
 
-    <main>
-      <!--- lav profil bar --->
-      <ion-item>
-        Profil Bar
-      </ion-item>
+  <section id="myModal" class="modal">
 
-      <section class="opslagWrapper">
-        <img class="opslagImg" src="./opslag.jpg">
-        <div class="opslagInfo">
-          <h1 class="opslagTitel">Eksempel</h1>
-          <h2 class="opslagPris">40 kr</h2>
-          <h3 class="opslagMaengde">Pluk selv</h3>
-          <h3 class="opslagAfstand">3.1 km</h3>
-          <p class="opslagBeskrivelse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
-
-          <div class="kvalitetInfo">
-            <div class="holdbarhed">
-              <h3>Holdbarhed</h3>
-              <img src="holdbarhedicon.svg" alt="Holdbarhed">
-              <h2>22.dec.</h2>
-            </div>
-            <div class="kvalitet">
-              <h3>Kvalitet</h3>
-              <img src="kvaliteticon.svg" alt="Kvalitet">
-              <h2>22.dec.</h2>
-            </div>
+    <div class="modal-content">
+        <header class="modal-header">
+          <div>
+            <span class="close">&times;</span>
+            <!-- empty space -->
           </div>
-        </div>
+          <h1 class="pangolin">Opslag</h1>
+          <div>
+            <!-- empty space -->
+          </div>
+      </header>
+
+        <section id="modal-opslag" class="opret-opslag-container">
+
+
+        </section>
+
+      <div class="modal-footer">
         <button class="skriv">Skriv til bruger</button>
+      </div>
+    </div>
 
-      </section>
-
-
-    </main>
   </section>
 
   <!------------ Beskeder ------------>
