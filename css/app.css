@@ -386,6 +386,10 @@ form .form-element-checkbox-list .form-element label {
 .opslagWrapper {
   margin: 0 -5%;
 }
+.opslagWrapper img {
+  width: 100%;
+
+}
 
 .opslagTitel {
   grid-area: t;
@@ -459,6 +463,7 @@ form .form-element-checkbox-list .form-element label {
     "b b b b"
     "k k k k";
 }
+
 
 .kvalitetTitel {
   font-size: 14pt;
@@ -615,7 +620,46 @@ form .form-element-checkbox-list .form-element label {
   text-align: center;
 }
 
+
+
 /* ---------- MODALS ---------- */
 .modal {
   display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--yellow);
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+
+
+/* Modal Content */
+.modal-content {
+  position: absolute;
+  background-color: white;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
