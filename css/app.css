@@ -1,340 +1,31 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.card-container {
+margin-left: 1rem;
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+
 }
-
-:root {
-  --yellow: #E7B73D;
-  --yellow-rgb: 231 183 61;
-
-  --orange: #EA951D;
-  --orange-rgb: 234 149 29;
-
-  --darkOrange: #C86001;
-  --darkOrange-rgb: 200 96 1;
-
-  --white: #FFFFFF;
-  --lightGrey: #F4F4F4;
-  --grey: #ADADAD;
-  --darkGrey: #7C7C7C;
-  --black: #050706;
-
-  --shadow-rgba: rgba(0, 0, 0, 0.15);
-}
-
-html {
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-}
-
-nav {
-  height: 3.334rem;
-  color: var(--darkGrey);
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--lightGrey);
-}
-
-nav a {
-  display: flex;
-  flex-direction: column;
-  width: 20%;
-  text-align: center;
-}
-
-nav img {
-  height: 2rem;
-}
-
-.tab {
-  min-height: calc(100vh - 3.334rem);
-  padding-bottom: 4.334rem; /* spacing for tabbar + 15px margin */
-}
-
-.pangolin {
-  font-family: 'Pangolin', cursive;
-  font-weight: lighter; /* make it "normal" */
-}
-
-/* ---------- TOP TABBAR ---------- */
-
-header {
-  background-color: var(--yellow);
-  color: var(--white);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 3.334rem;
-  width: 100%;
-  padding: 0 1.334rem;
-}
-
-header div { /* Tabbar content except h1 */
-  width: 65px;
-  flex-shrink: 0;
-}
-
-header div:last-child { /* The right div in header */
-  text-align: right;
-  display: flex;
-  justify-content: flex-end;
-}
-
-header div:last-child a {
-  width: 2rem;
-  height: 2rem;
-  margin-left: 0.334rem;
-  background: none;
-  color: var(--yellow-contrast);
-}
-
-header #logo {
-  height: 2rem;
-}
-
-header h1 {
-  font-size: 1.33rem;
-  text-align: center;
-  width: 100%;
-  margin: 0;
-}
-
-/* ---------- BOTTOM TABBAR ---------- */
-
-.tab-selected {
-  color: var(--orange);
-}
-
-/* ---------- WELCOME SCREEN ---------- */
-
-#welcome {
-  background-color: var(--yellow);
-  height: 100vh;
-  text-align: center;
-}
-
-#welcome #logo {
-  width: 16rem;
-  margin: 4rem 0 2rem 0;
-}
-
-#welcome #welcome-index {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100% - 190px);
-}
-
-#welcome #welcome-index p {
-  font-size: 2rem;
-  color: var(--white);
-}
-
-#welcome #welcome-index div {
-  margin: 0 3rem 4rem 3rem;
-}
-
-#welcome button {
-  width: 100%;
-  height: 3.334rem;
-  background-color: var(--darkOrange);
-  border-radius: 1rem;
-  color: var(--white);
-  font-size: 1.334rem;
-  text-transform: uppercase;
-  border: none;
-}
-
-#welcome #welcome-index button:first-of-type {
-  margin: 1rem 0;
-}
-
-form {
-  background-color: var(--white);
-  border-radius: 1rem;
-  margin: 0 2rem;
-  padding: 1.667rem;
-}
-
-#welcome form .back-button {
-  width: 1.667rem;
-  height: 100%;
-  border-radius: 0;
-  background-color: var(--white);
-  color: var(--orange);
-  font-size: 1.334rem;
-}
-
-form .form-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-form .form-header div {
-  width: 2rem;
-  flex-shrink: 0;
-}
-
-form .form-header div:first-of-type {
-  text-align: left;
-}
-
-form .form-header h1 {
-  width: 100%;
-  margin: 0;
-  color: var(--orange);
-  font-size: 1.334rem;
-  text-align: center;
-}
-
-form .form-element {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
-}
-
-form .form-element label {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: var(--grey);
-  order: -1; /* Position the label above the input, as the HTML needs to be  */
-  text-align: left;
-}
-
-form .form-element input {
-  width: 100%;
-  border-radius: 2px;
-  border: none;
-  border-bottom: 2px solid var(--grey);
-  padding: 5px;
-  color: var(--darkGrey);
-}
-
-form .form-element input:focus {
-  border-color: var(--orange);
-}
-
-form .form-element input:focus + label {
-  color: var(--orange);
-}
-
-form .form-forgot-password {
-  font-size: 0.667rem;
-  height: 1rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  color: var(--grey);
-}
-
-#welcome form .form-button {
-  margin-top: 1.667rem;
-  height: 2.334rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  width: auto;
-  padding: 0.334rem 1.5rem;
-  background-color: var(--orange);
-}
-
-form .form-element-double {
-  display: flex;
-}
-
-form .form-element-double .form-element:last-of-type {
-  margin-left: 1rem;
-  width: 5rem;
-  flex-shrink: 0;
-}
-
-form .form-element-checkbox-list {
-  margin-top: 1rem;
-}
-
-form .form-element-checkbox-list div:first-of-type {
-  text-align: left;
-}
-
-form .form-element-checkbox-list label {
-  width: 100%;
-  font-size: 0.8rem;
-  color: var(--grey);
-  text-transform: uppercase;
-}
-
-form .form-element-checkbox-list .form-element {
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 0.334rem;
-}
-
-form .form-element-checkbox-list .form-element label {
-  text-transform: capitalize;
-  font-size: 1rem;
-  color: var(--darkGrey);
-}
-
-/* ---------- HOME ---------- */
-
-.category .category-header {
-  margin: 1rem 1rem 0.5rem 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.category .category-header .category-title {
-  color: var(--grey);
-}
-
-.category .category-header button {
-  border: none;
-  border-radius: 0.334rem;
-  padding: 0.2rem 0.5rem;
-  text-transform: uppercase;
-  font-size: 0.667rem;
-  color: var(--white);
-  background-color: var(--yellow);
-  height: 20px;
-}
-
-.category .slides {
-  white-space: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  padding-bottom: 2px; /* padding for the card shadow to have space */
-}
-
-.category .slides .card {
+.card-container .card {
   display: inline-block;
-  width: 200px;
-  height: 156px;
+  width: 45%;
+  height: 135px;
   flex-shrink: 0;
   flex-grow: 0;
   box-shadow: 0px 2px 4px var(--shadow-rgba);
   margin-right: 1rem;
   border-radius: 2px;
+  margin-bottom: 1rem;
 }
 
-.category .slides .card:first-of-type {
-  margin-left: 1rem;
-}
 
-.category .slides .card:last-of-type {
-  margin-right: 0;
-}
 
-.category .slides .card .card-img {
+.card-container .card .card-img {
   width: 100%;
-  height: 120px;
+  height: 100px;
   border-radius: 2px 2px 0 0;
 }
 
-.category .slides .card .card-title {
+.card-container .card .card-title {
   font-size: 1rem;
   font-weight: normal;
   margin: 0 0.334rem;
@@ -342,86 +33,21 @@ form .form-element-checkbox-list .form-element label {
   color: var(--yellow);
 }
 
-.category .slides .card .card-content {
+.card-container .card .card-content {
   margin: 0 0.334rem;
   display: flex;
   justify-content: space-between;
 }
 
-.category .slides .card .card-content p {
+.card-container .card .card-content p {
   color: var(--grey);
   font-size: 0.8rem;
 }
-
-/* --- opslag side ---*/
-
-.opslagTitel {
-  grid-area: t;
-  color: #E7B73D;
-  font-size: 24pt;
+ #profil-opslag-titel {
+  color: var(--grey);
+  font-size: 1rem;
   font-family: 'Raleway', sans-serif;
+  margin-bottom: 1rem;
+  text-align: center;
 
-}
-.opslagPris {
-  grid-area: p;
-  font-size: 24pt;
-  display: flex;
-  justify-content: flex-end;
-  font-family: 'Raleway', sans-serif;
-}
-.opslagMaengde {
-  grid-area: m;
-  color: #ADADAD;
-  font-size: 14pt;
-  font-family: 'Raleway', sans-serif;
-}
-.opslagAfstand {
-  grid-area: a;
-  color: #ADADAD;
-  font-size: 14pt;
-  display: flex;
-  justify-content: flex-end;
-  font-family: 'Raleway', sans-serif;
-}
-.opslagBeskrivelse {
-  grid-area: b;
-  font-family: 'Raleway', sans-serif;
-  font-size: 16pt;
-}
-.kvalitetInfo {
-  grid-area: k;
-
-}
-
-
-.opslagInfo {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-  "t t p p"
-  "m m a a"
-  "b b b b"
-  ". k k .";
-}
-
-.skriv {
-  width: 110%;
-margin-left: -5%;
-height: 52px;
-color: white;
-background-color: #E7B73D;
-position: fixed;
-bottom: 0;
-font-family: 'Pangolin', cursive;
-font-size: 14pt;
-}
-
-/* Profil side */
-
-
-/* ---------- MODALS ---------- */
-
-.modal {
-  display: none;
 }
