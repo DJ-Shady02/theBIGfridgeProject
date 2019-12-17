@@ -15,11 +15,11 @@
 
   <!------------ Tabbar ------------>
   <nav style="display: none;">
-    <a onclick="showTab('home')">
+    <a href="#home" onclick="showTab('home')">
       <img src="img/home.svg" alt="hjem ikon">
       <label>Køleskab</label>
     </a>
-    <a onclick="showTab('follow')">
+    <a href="#follow" onclick="showTab('follow')">
       <img src="img/foelger.svg" alt="foelger ikon">
       <label>Følger</label>
     </a>
@@ -27,11 +27,11 @@
       <img src="img/plus.svg" alt="plus ikon">
       <label>Opret opslag</label>
     </a>
-    <a onclick="showTab('profile')">
+    <a href="#profile" onclick="showTab('profile'), loadOwnProfile()">
       <img src="img/profil.svg" alt="profil ikon">
       <label>Profil</label>
     </a>
-    <a onclick="showTab('menu')">
+    <a href="#menu" onclick="showTab('menu')">
       <img src="img/menu.svg" alt="menu ikon">
       <label>Menu</label>
     </a>
@@ -377,7 +377,6 @@
           </section>
         </section>
       </section>
-
     </main>
   </section>
 
@@ -419,63 +418,33 @@
     </header>
 
     <main>
-
-        <section class="profilWrapper">
-          <img src="profilBillede.jpg">
-          <div class="foelgerContainer">
-            <div class="antalOpslag">
-              <h1>Opslag</h1>
-              <h2>1</h2>
-            </div>
-            <div class="antalFoelgere">
-              <h1>Følgere</h1>
-              <h2>3</h2>
-            </div>
-            <div class="antalFulgte">
-              <h1>Følger</h1>
-              <h2>1</h2>
-            </div>
+      <section class="profile-wrapper">
+        <img id="profile-img" src="profilBillede.jpg">
+        <div class="follower-container">
+          <div id="profile-posts">
+            <p>Opslag</p>
+            <p class="pangolin"></p>
           </div>
-          <h1>Navn</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget posuere arcu. Nunc porta fringilla gravida. Ut auctor non dui ac pharetra. Nulla interdum magna vitae nunc tristique auctor. </p>
-          <button class="redigerKnap">Rediger profil</button>
-        </section>
+          <div id="profile-followers">
+            <p>Følgere</p>
+            <p class="pangolin"></p>
+          </div>
+          <div id="profile-following">
+            <p>Følger</p>
+            <p class="pangolin"></p>
+          </div>
+        </div>
+        <h2 id="profile-name"></h2>
+        <p id="profile-bio"></p>
+        <button class="redigerKnap">Rediger profil</button>
+      </section>
 
       <h2 id="profil-opslag-titel">Mine opslag</h2>
-      <section class="card-container">
-
-        <section class="card">
-          <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
-          <div class="card-header">
-            <h3 class="card-title">Eksempel 1</h3>
-          </div>
-          <div class="card-content">
-            <p>2.2 km</p>
-            <p>10 kr</p>
-          </div>
-        </section>
-        <section class="card">
-          <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
-          <div class="card-header">
-            <h3 class="card-title">Eksempel 2</h3>
-          </div>
-          <div class="card-content">
-            <p>2.2 km</p>
-            <p>10 kr</p>
-          </div>
-        </section>
-        <section class="card">
-          <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
-          <div class="card-header">
-            <h3 class="card-title">Eksempel 2</h3>
-          </div>
-          <div class="card-content">
-            <p>2.2 km</p>
-            <p>10 kr</p>
-          </div>
-        </section>
-
+      <section class="profile card-container">
+        
       </section>
+    </main>
+  </section>
 
   <!------------ Menu ------------>
   <section id="menu" class="tab" style="display: none;">
