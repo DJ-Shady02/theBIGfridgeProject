@@ -277,18 +277,18 @@ form .form-element-checkbox-list .form-element label {
 }
 
 /* ---------- HOME ---------- */
-.category .category-header {
+.category-header {
   margin: 1rem 1rem 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.category .category-header .category-title {
+.category-header .category-title {
   color: var(--grey);
 }
 
-.category .category-header button {
+.category-header button {
   border: none;
   border-radius: 0.334rem;
   padding: 0.2rem 0.5rem;
@@ -299,7 +299,7 @@ form .form-element-checkbox-list .form-element label {
   height: 20px;
 }
 
-.category .slides {
+.slides {
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -307,7 +307,7 @@ form .form-element-checkbox-list .form-element label {
   /* padding for the card shadow to have space */
 }
 
-.category .slides .card {
+.slides .card {
   display: inline-block;
   width: 200px;
   height: 156px;
@@ -318,17 +318,17 @@ form .form-element-checkbox-list .form-element label {
   border-radius: 2px;
 }
 
-.category .slides .card:first-of-type {
+.slides .card:first-of-type {
   margin-left: 1rem;
 }
 
-.category .slides .card .card-img {
+.slides .card .card-img {
   width: 100%;
   height: 120px;
   border-radius: 2px 2px 0 0;
 }
 
-.category .slides .card .card-title {
+.slides .card .card-title {
   font-size: 1rem;
   font-weight: normal;
   margin: 0 0.334rem;
@@ -336,13 +336,13 @@ form .form-element-checkbox-list .form-element label {
   color: var(--yellow);
 }
 
-.category .slides .card .card-content {
+.slides .card .card-content {
   margin: 0 0.334rem;
   display: flex;
   justify-content: space-between;
 }
 
-.category .slides .card .card-content p {
+.slides .card .card-content p {
   color: var(--grey);
   font-size: 0.8rem;
 }
@@ -354,6 +354,7 @@ width: 100%;
 display: flex;
 justify-content: space-between;
 }
+
 .bruger-wrapper {
   display: flex;
 }
@@ -385,66 +386,6 @@ border-radius: 5px;
 
 .bruger-indstilling-ikon {
  width: 30px;
-
-
-}
-
-#modal-opslag main .bruger-container  {
-  padding: 1rem 0;
-
-}
-
-
-
-.follower-container .slides {
-  white-space: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  padding-bottom: 2px; /* padding for the card shadow to have space */
-}
-
-.follower-container .slides .card {
-  display: inline-block;
-  width: 200px;
-  height: 156px;
-  flex-shrink: 0;
-  flex-grow: 0;
-  box-shadow: 0px 2px 4px var(--shadow-rgba);
-  margin-right: 1rem;
-  border-radius: 2px;
-}
-
-.follower-container .slides .card:first-of-type {
-  margin-left: 1rem;
-}
-
-.follower-container .slides .card:last-of-type {
-  margin-right: 0;
-}
-
-.follower-container .slides .card .card-img {
-  width: 100%;
-  height: 120px;
-  border-radius: 2px 2px 0 0;
-}
-
-.follower-container .slides .card .card-title {
-  font-size: 1rem;
-  font-weight: normal;
-  margin: 0 0.334rem;
-  margin-top: -2px;
-  color: var(--yellow);
-}
-
-.follower-container .slides .card .card-content {
-  margin: 0 0.334rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-.follower-container .slides .card .card-content p {
-  color: var(--grey);
-  font-size: 0.8rem;
 }
 
 
@@ -482,100 +423,6 @@ border-radius: 5px;
   height: 60px;
   object-fit: cover;
   border-radius: 6px;
-}
-
-.opslagWrapper {
-  margin: 0 -5%;
-}
-.opslagWrapper img {
-  width: 100%;
-
-}
-
-.opslagTitel {
-  grid-area: t;
-  color: #E7B73D;
-  font-size: 24pt;
-  font-family: 'Raleway', sans-serif;
-}
-
-.opslagPris {
-  grid-area: p;
-  font-size: 24pt;
-  display: flex;
-  justify-content: flex-end;
-  font-family: 'Raleway', sans-serif;
-}
-
-.opslagMaengde {
-  grid-area: m;
-  color: #ADADAD;
-  font-size: 14pt;
-  font-family: 'Raleway', sans-serif;
-}
-
-.opslagAfstand {
-  grid-area: a;
-  color: #ADADAD;
-  font-size: 14pt;
-  display: flex;
-  justify-content: flex-end;
-  font-family: 'Raleway', sans-serif;
-}
-
-.opslagBeskrivelse {
-  grid-area: b;
-  font-family: 'Raleway', sans-serif;
-  font-size: 16pt;
-}
-
-.holdbarhed {
-  grid-area: h;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.kvalitet {
-  grid-area: kv;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.kvalitetInfo {
-  grid-area: k;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    ". h . kv";
-  margin-top: 25px;
-}
-
-.opslagInfo {
-  margin: 0 5%;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "t t p p"
-    "m m a a"
-    "b b b b"
-    "k k k k";
-}
-
-
-.kvalitetTitel {
-  font-size: 14pt;
-  font-family: 'Raleway', sans-serif;
-  color: #ADADAD;
-}
-
-.kvalitetDato {
-  font-size: 18pt;
-  font-family: 'Raleway', sans-serif;
-  color: #E7B73D;
 }
 
 .skriv {
@@ -727,23 +574,17 @@ border-radius: 5px;
 .modal {
   display: none;
   position: fixed;
+  overflow-y: scroll;
   top: 0;
   width: 100%;
   height: 100%;
 
 }
 
-/* Modal Header */
-.modal-header {
-  padding: 2px 16px;
-  background-color: var(--yellow);
-  color: white;
-}
-
 /* Modal Body */
-.modal-body {padding: 2px 16px;}
-
-
+.modal-body {
+  padding-bottom: 4.334rem;
+}
 
 /* Modal Content */
 .modal-content {
@@ -751,7 +592,6 @@ border-radius: 5px;
   background-color: white;
   margin: auto;
   padding: 0;
-  border: 1px solid #888;
   width: 100%;
   height: 100%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -766,6 +606,7 @@ border-radius: 5px;
 }
 
 
+
 .image-upload-element {
   margin-top: 2rem;
 }
@@ -773,4 +614,78 @@ border-radius: 5px;
   color: var(--grey);
   font-size: 1rem;
   font-family: 'Raleway', sans-serif;
+
+.opslagWrapper img {
+  width: 100%;
+
+}
+
+.opslagTitel {
+  grid-area: t;
+  color: #E7B73D;
+}
+
+.opslagPris {
+  grid-area: p;
+  text-align: right;
+}
+
+.opslagTitel, .opslagPris {
+  font-size: 1.667rem;
+}
+
+.opslagMaengde {
+  grid-area: m;
+}
+
+.opslagAfstand {
+  grid-area: a;
+  text-align: right;
+}
+
+.opslagMaengde, .opslagAfstand {
+  color: var(--grey);
+  font-size: 1.2rem;
+}
+
+.opslagBeskrivelse {
+  grid-area: b;
+  font-size: 1.2rem;
+}
+
+.opslagInfo {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "t t p p"
+    "m m a a"
+    "b b b b"
+    "k k k k";
+}
+
+.holdbarhed {
+  grid-area: h;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kvalitet {
+  grid-area: kv;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kvalitetInfo {
+  grid-area: k;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". h . kv";
+  margin-top: 25px;
+
 }

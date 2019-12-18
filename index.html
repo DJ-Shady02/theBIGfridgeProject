@@ -412,7 +412,7 @@
         <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
       </section>
 
-      <section class="follower-container">
+      <section class="following-posts">
         <section class="slides">
           <section class="card" onclick="openModal()">
             <img src="img/img-placeholder.jpg" class="card-img" alt="bruger uploadet billede">
@@ -517,7 +517,11 @@
   <section id="myModal" class="modal">
 
     <div class="modal-content">
+
       <header class="modal-header">
+
+
+
         <div>
           <span class="close">&times;</span>
           <!-- empty space -->
@@ -531,10 +535,9 @@
       <section id="modal-opslag" class="modal-body">
 
         <main>
-          <!--- lav profil bar --->
           <section class="bruger-container">
             <div class="bruger-wrapper">
-              <img class="bruger-billede" src="img/img-placeholder.jpg" alt="bruger uploadet billede">
+              <img class="bruger-billede" src="img/profile-picture-placeholder.jpg" alt="bruger uploadet billede">
               <div class="bruger-info">
                 <h2>Navn Efternavn</h2>
                 <h3>Slået op d. 15 December</h3>
@@ -544,7 +547,7 @@
           </section>
 
           <section class="opslagWrapper">
-            <img class="opslagImg" src="/img/img-placeholder.jpg">
+            <img class="opslagImg" src="img/img-placeholder.jpg">
             <div class="opslagInfo">
               <h1 class="opslagTitel">Eksempel</h1>
               <h2 class="opslagPris">40 kr</h2>
@@ -555,13 +558,13 @@
               <div class="kvalitetInfo">
                 <div class="holdbarhed">
                   <h3>Holdbarhed</h3>
-                  <img src="holdbarhedicon.svg" alt="Holdbarhed">
+                  <img src="img/plus.svg" alt="Holdbarhed">
                   <h2>22.dec.</h2>
                 </div>
                 <div class="kvalitet">
                   <h3>Kvalitet</h3>
-                  <img src="kvaliteticon.svg" alt="Kvalitet">
-                  <h2>22.dec.</h2>
+                  <img src="img/plus.svg" alt="Kvalitet">
+                  <h2>Frisk</h2>
                 </div>
               </div>
             </div>
@@ -589,7 +592,9 @@
     <div class="modal-content">
       <header class="modal-header">
         <div>
+
           <span onclick="closeModal()">&times;</span>
+
           <!-- empty space -->
         </div>
         <h1 class="pangolin">Opslag</h1>
@@ -619,6 +624,7 @@
 <!--         <input type="file" id="create-image" required> --->
 
           </div>
+
 
     <div class="form-element">
       <input type="text" id="create-title" required>
