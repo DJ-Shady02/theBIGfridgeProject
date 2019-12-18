@@ -23,7 +23,7 @@
       <img src="img/foelger.svg" alt="foelger ikon">
       <label>Følger</label>
     </a>
-    <a onclick="// modal">
+    <a onclick="openCreateModal()">
       <img src="img/plus.svg" alt="plus ikon">
       <label>Opret opslag</label>
     </a>
@@ -409,7 +409,7 @@
             <h3>Opslag fra Navn</h3>
           </div>
         </div>
-          <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
+        <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
       </section>
 
       <section class="follower-container">
@@ -487,7 +487,7 @@
 
       <h2 id="profil-opslag-titel">Mine opslag</h2>
       <section class="profile card-container">
-        
+
       </section>
     </main>
   </section>
@@ -513,10 +513,10 @@
   <!------------ Opslag ------------>
 
 
-<!-- The Modal -->
-<section id="myModal" class="modal">
+  <!-- The Modal -->
+  <section id="myModal" class="modal">
 
-  <div class="modal-content">
+    <div class="modal-content">
       <header class="modal-header">
         <div>
           <span class="close">&times;</span>
@@ -526,7 +526,7 @@
         <div>
           <!-- empty space -->
         </div>
-    </header>
+      </header>
 
       <section id="modal-opslag" class="modal-body">
 
@@ -540,7 +540,7 @@
                 <h3>Slået op d. 15 December</h3>
               </div>
             </div>
-              <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
+            <img class="bruger-indstilling-ikon" src="img/Arrow Down.svg" alt="Profilindstillinger ikon">
           </section>
 
           <section class="opslagWrapper">
@@ -573,40 +573,105 @@
         </main>
       </section>
 
-    <div class="modal-footer">
-      <button class="skriv">Skriv til bruger</button>
+      <div class="modal-footer">
+        <button class="skriv">Skriv til bruger</button>
+      </div>
     </div>
-  </div>
 
-</section>
+  </section>
 
 
 
   <!------------ Opret opslag ------------>
 
-  <section id="myModal" class="modal">
+  <section id="createModal" class="modal">
 
     <div class="modal-content">
-        <header class="modal-header">
-          <div>
-            <span class="close">&times;</span>
-            <!-- empty space -->
-          </div>
-          <h1 class="pangolin">Opslag</h1>
-          <div>
-            <!-- empty space -->
-          </div>
+      <header class="modal-header">
+        <div>
+          <span onclick="closeModal()">&times;</span>
+          <!-- empty space -->
+        </div>
+        <h1 class="pangolin">Opslag</h1>
+        <div>
+          <!-- empty space -->
+        </div>
       </header>
 
-        <section id="modal-opslag" class="opret-opslag-container">
+      <section id="modal-opslag" class="opret-opslag-container">
+
+        <form>
+          <div id="create-form" style="display: block;">
+            <div class="form-header">
+
+            </div>
 
 
-        </section>
+          </div>
 
-      <div class="modal-footer">
-        <button class="skriv">Skriv til bruger</button>
+          <h1 class="pangolin">Fortæl lidt om varen</h1>
+          <div>
+            <!-- empty space -->
+          </div>
+          <div class="image-upload-element">
+            <label for="create-image">Billede</label>
+            <p>Kun placeholder billede for nu... <br>sorry :( </p>
+<!--         <input type="file" id="create-image" required> --->
+
+          </div>
+
+    <div class="form-element">
+      <input type="text" id="create-title" required>
+      <label for="create-title">Titel</label>
+    </div>
+    <div class="form-element">
+      <input type="text" id="create-description" required>
+      <label for="create-description">Beskrivelse</label>
+    </div>
+    <div class="form-element-double">
+      <div class="form-element">
+
+        <select name="category" id="create-category" required>
+    <option value="Frugt & grønt">Frugt & grønt</option>
+    <option value="Bagværk">Bagværk</option>
+    <option value="Kød">Kød</option>
+    <option value="Majeri og æg">Majeri og æg</option>
+    <option value="Rester">Rester</option>
+  </select>
+        <label for="create-category">Kategori</label>
+      </div>
+      <div class="form-element">
+        <select name="category" id="create-quality" required>
+    <option value="god">God</option>
+    <option value="frisk">Frisk</option>
+    <option value="ok">Ok</option>
+    <option value="bruges snarest">Bruges snarest</option>
+  </select>
+        <label for="create-quality">Kvalitet</label>
       </div>
     </div>
+    <div class="form-element-double">
+      <div class="form-element">
+        <input type="text" id="create-amount" required>
+        <label for="create-amount">Mængde</label>
+      </div>
+      <div class="form-element">
+        <input type="date" id="create-expiration" maxlength="4" required>
+        <label for="create-expiration">Holdbarhed</label>
+      </div>
+    </div>
+    <div class="form-element">
+      <input type="number" id="create-price" required>
+      <label for="create-price">Pris</label>
+    </div>
+
+    </form>
+</div>
+    <div class="modal-footer">
+      <button class="skriv" onclick="createPost()">Opret opslag</button>
+    </div>
+  </section>
+
 
   </section>
 

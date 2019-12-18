@@ -764,3 +764,13 @@ border-radius: 5px;
   from {top: -300px; opacity: 0}
   to {top: 0; opacity: 1}
 }
+
+
+.image-upload-element {
+  margin-top: 2rem;
+}
+.image-upload-element label {
+  color: var(--grey);
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+}
