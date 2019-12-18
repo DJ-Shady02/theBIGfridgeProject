@@ -1,42 +1,6 @@
 "use strict";
 
-// Modal functionality
-customElements.define('modal-page', class extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = document.getElementById('modal-create').innerHTML;
-  }
-});
 
-function presentModal() {
-  // create the modal with the `modal-page` component
-  const modalElement = document.createElement('ion-modal');
-  modalElement.component = 'modal-page';
-  // present the modal
-  document.body.appendChild(modalElement);
-  return modalElement.present();
-}
-
-customElements.define('opslag-modal-page', class extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = document.getElementById('modal-opslag').innerHTML;
-  }
-});
-
-function presentOpslagModal() {
-  // create the modal with the `modal-page` component
-  const modalElement = document.createElement('ion-modal');
-  modalElement.component = 'opslag-modal-page';
-  // present the modal
-  document.body.appendChild(modalElement);
-  return modalElement.present();
-}
-
-async function dismissModal() {
-  let modal = document.getElementsByTagName('ion-modal')[0];
-  await modal.dismiss({
-    'dismissed': true
-  });
-}
 
 // ---------- Profile Tab ---------- //
 
@@ -120,11 +84,13 @@ function loadOwnProfile() {
     // if any posts exists (again)
     if (userDoc.data().posts) {
       // post posts
-      /*
+      console.log("i was here");
       _db.collection("posts").doc(user.uid).onSnapshot(function(postDoc) {
         console.log("Current data: ", postDoc.data());
+        //cardContainer.innerHTML =
+
       });
-      */
+
 
       /* card template
       <section class="card">
@@ -138,17 +104,23 @@ function loadOwnProfile() {
         </div>
       </section>
       */
+
+
+
     } else {
       cardContainer.innerHTML = "<p>Du har ingen opslag</p>"
     }
   });
-  
+
 }
+
+
 
 //-------Modal function ------//
 
 // Get the modal
 var modal = document.getElementById("myModal");
+var createModal = document.getElementById("createModal");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -157,8 +129,70 @@ var span = document.getElementsByClassName("close")[0];
 function openModal() {
   modal.style.display = "block";
 }
+function openCreateModal() {
+  createModal.style.display = "block";
+}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
+}
+function closeModal() {
+  createModal.style.display = "none";
+}
+
+
+
+
+// ------ Create post ------ //
+
+function createPost() {
+  // Get user info
+  const createImage = document.querySelector('#create-image');
+  const createTitle = document.querySelector('#create-title');
+  // no need to get password repeat, we already checked if they were equal
+  const createDescription = document.querySelector('#create-description');
+  const createCategory = document.querySelector('#create-category');
+  const createQuality= document.querySelector('#create-quality');
+  const createAmount = document.querySelector('#create-amount');
+  const createExpiration = document.querySelector('#create-expiration');
+  const createPrice = document.querySelector('#create-price');
+
+
+  // Handle errors
+
+  /*if (signupLastName.value == "" || signupAddress.value == "" || signupCity.value == signupPostal.value || signupPhone.value == "") { // If error
+    console.log("Invalid values" + "Correct values and try again");
+    // show error to user
+    return; // Do not create user
+  } else {
+    // remove error in case they come back or have to try again and recieve new errors
+  };*/
+
+
+  let newPostId = "";
+  // add post
+  _db.collection("posts").add({
+      img: ["img/img-placeholder.jpg"],
+      title: createTitle.value,
+      description: createDescription.value,
+      category: createCategory.value,
+      quality: createQuality.value,
+      amount: createAmount.value,
+      expirationDate: new Date(createExpiration.value).getTime(),
+      price: createPrice.value,
+      uploadDate: new Date().getTime(),
+      userId: _auth.currentUser.uid
+
+  }).then(function(postRef) {
+    newPostId = postRef.id;
+  });
+
+  _db.collection("users").doc(_auth.currentUser.uid).onSnapshot(function(userDoc) {
+    console.log(userDoc.posts);
+    /*.update({
+        posts: postArray
+    });*/
+});
+
 }

@@ -606,6 +606,15 @@ border-radius: 5px;
 }
 
 
+
+.image-upload-element {
+  margin-top: 2rem;
+}
+.image-upload-element label {
+  color: var(--grey);
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+
 .opslagWrapper img {
   width: 100%;
 
@@ -678,4 +687,5 @@ border-radius: 5px;
   grid-template-areas:
     ". h . kv";
   margin-top: 25px;
+
 }
